@@ -89,7 +89,7 @@ export const portfolioConfig = {
       description: "Admin dashboard for the Portrait project.",
     },
     "den-project": {
-      visible: true,
+      visible: false,
       span: "small",
       description: "Static web experiment and prototype.",
     },
