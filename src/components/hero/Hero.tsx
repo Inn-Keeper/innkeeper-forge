@@ -44,6 +44,7 @@ export function Hero() {
           className="mt-10 flex flex-wrap gap-4"
         >
           <Button href="#projects">View projects</Button>
+          <Button href="#about" variant="ghost">About</Button>
           <Button href={githubUrl} variant="ghost" external>
             GitHub profile
           </Button>
