@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Innkeeper Forge
 
-## Getting Started
+A dark, cinematic GitHub portfolio built with Next.js. Projects sync from GitHub at build/refresh time; visibility and copy are curated in config.
 
-First, run the development server:
+## Quick start
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Copy `.env.example` to `.env.local` and set `GITHUB_TOKEN` to sync **public and private** repos. Without a token, only public repos are fetched (with a dev warning).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Show / hide projects
 
-## Learn More
+Edit [`src/data/repos.config.ts`](src/data/repos.config.ts):
 
-To learn more about Next.js, take a look at the following resources:
+```ts
+"tech-refresh": { visible: false },  // hidden
+"dev-panel": { visible: true, featured: true },
+// repos not listed → shown automatically when GitHub returns them
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Push to deploy visibility changes on Vercel.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Refresh after creating a new repo
 
-## Deploy on Vercel
+Three options (fastest first):
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. **On-demand** — `pnpm refresh` (calls `POST /api/revalidate?secret=...`)
+2. **Automatic** — ISR refreshes hourly on Vercel
+3. **Webhook** — GitHub `repository` events → your `/api/revalidate` URL
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Set `REVALIDATION_SECRET` in `.env.local` and Vercel project settings.
+
+## Environment variables
+
+| Variable | Required | Purpose |
+|----------|----------|---------|
+| `GITHUB_TOKEN` | Production + private repos | Inn-Keeper PAT with `repo` scope; fetches public + private repos |
+| `REVALIDATION_SECRET` | Production | Protects on-demand refresh endpoint |
+| `PORTFOLIO_URL` | Local refresh | Base URL for `pnpm refresh` |
+
+Private repo names/descriptions appear on the deployed site. Use `visible: false` in config to hide sensitive repos.
+
+## Deploy to Vercel
+
+1. Push to GitHub
+2. Import repo in Vercel
+3. Add `GITHUB_TOKEN` and `REVALIDATION_SECRET` env vars
+4. Optional: GitHub webhook → `https://your-domain/api/revalidate?secret=YOUR_SECRET`
+
+## Next.js concepts used
+
+| File | Pattern |
+|------|---------|
+| `src/app/page.tsx` | Server Component, async data fetch, ISR (`revalidate = 3600`) |
+| `src/app/layout.tsx` | Root layout, `next/font`, Metadata API |
+| `src/app/api/revalidate/route.ts` | Route Handler, on-demand revalidation |
+| `src/components/hero/Hero.tsx` | Client Component (`"use client"`), Motion animations |
+| `src/components/hero/EmberField.tsx` | Client island, React Three Fiber canvas |
+| `src/lib/github.ts` | Server-side fetch with `next.revalidate` cache |
+| `src/data/repos.config.ts` | Static config merged with API data |
