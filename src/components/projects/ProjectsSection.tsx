@@ -41,7 +41,7 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
           />
         </div>
 
-        <div className="mt-10 grid grid-cols-12 gap-5">
+        <div className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-2">
           {filtered.map((project, index) => (
             <ProjectCard key={project.slug} project={project} index={index} />
           ))}

@@ -5,12 +5,6 @@ import { Badge } from "@/components/ui/Badge";
 import { getLanguageColor } from "@/lib/languages";
 import type { Project } from "@/types/project";
 
-const spanClasses = {
-  large: "col-span-12 lg:col-span-8",
-  medium: "col-span-12 lg:col-span-6",
-  small: "col-span-12 lg:col-span-4",
-} as const;
-
 interface ProjectCardProps {
   project: Project;
   index: number;
@@ -32,7 +26,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
       transition={{ duration: 0.45, delay: index * 0.06 }}
-      className={`group ${spanClasses[project.span]}`}
+      className="group"
     >
       <div className="forge-glow flex h-full flex-col rounded-2xl border border-white/10 bg-bg-surface p-6 transition duration-300 group-hover:-translate-y-1 group-hover:border-ember/40">
         <div className="flex items-start justify-between gap-4">
