@@ -3,6 +3,7 @@
 import { motion } from "motion/react";
 import { Badge } from "@/components/ui/Badge";
 import { getLanguageColor } from "@/lib/languages";
+import { usePrefersReducedMotion } from "@/lib/motion";
 import type { Project } from "@/types/project";
 
 interface ProjectCardProps {
@@ -19,11 +20,13 @@ function formatDate(iso: string) {
 }
 
 export function ProjectCard({ project, index }: ProjectCardProps) {
+  const reducedMotion = usePrefersReducedMotion();
+
   return (
     <motion.article
-      layout
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      layout={!reducedMotion}
+      initial={reducedMotion ? false : { opacity: 0, y: 24 }}
+      whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
       transition={{ duration: 0.45, delay: index * 0.06 }}
       className="group"
@@ -77,18 +80,22 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             href={project.htmlUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm font-semibold text-ember transition hover:text-flame focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ember"
+            className="text-link text-sm font-semibold text-ember transition hover:text-flame focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ember"
           >
-            View on GitHub →
+            View on GitHub
+            <span className="sr-only"> — {project.name}</span> →
+            <span className="sr-only"> (opens in new tab)</span>
           </a>
           {project.demoUrl ? (
             <a
               href={project.demoUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm font-semibold text-text-muted transition hover:text-text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ember"
+              className="text-link text-sm font-semibold text-text-muted transition hover:text-text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ember"
             >
-              Live demo →
+              Live demo
+              <span className="sr-only"> — {project.name}</span> →
+              <span className="sr-only"> (opens in new tab)</span>
             </a>
           ) : null}
         </div>

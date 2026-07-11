@@ -19,9 +19,10 @@ export function Footer() {
           href={githubUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="font-mono text-sm text-ember transition hover:text-flame focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ember"
+          className="text-link font-mono text-sm text-ember transition hover:text-flame focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ember"
         >
           @{portfolioConfig.githubUsername}
+          <span className="sr-only"> (opens in new tab)</span>
         </a>
       </div>
     </footer>

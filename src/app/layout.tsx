@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { DM_Sans, JetBrains_Mono, Syne } from "next/font/google";
 import { LenisProvider } from "@/components/layout/LenisProvider";
+import { SkipLink } from "@/components/ui/SkipLink";
 import "./globals.css";
 
 const syne = Syne({
@@ -25,6 +26,10 @@ export const metadata: Metadata = {
   title: "Innkeeper Forge",
   description:
     "Projects and experiments from the workshop — a GitHub portfolio by Inn-Keeper.",
+  icons: {
+    icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
+    apple: [{ url: "/apple-icon.svg", type: "image/svg+xml" }],
+  },
   openGraph: {
     title: "Innkeeper Forge",
     description:
@@ -44,6 +49,7 @@ export default function RootLayout({
       className={`${syne.variable} ${dmSans.variable} ${jetbrainsMono.variable} h-full`}
     >
       <body className="min-h-full antialiased">
+        <SkipLink />
         <LenisProvider>{children}</LenisProvider>
       </body>
     </html>

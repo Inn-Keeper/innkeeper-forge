@@ -17,10 +17,14 @@ export function AboutSection() {
             ))}
           </div>
 
-          <aside className="forge-glow h-fit rounded-2xl border border-white/10 bg-bg-surface p-6 sm:p-8">
-            <p className="font-display text-2xl font-bold text-text-primary">
+          <div
+            role="region"
+            aria-label="Profile"
+            className="forge-glow h-fit rounded-2xl border border-white/10 bg-bg-surface p-6 sm:p-8"
+          >
+            <h3 className="font-display text-2xl font-bold text-text-primary">
               {aboutConfig.shortName}
-            </p>
+            </h3>
             <p className="mt-1 text-ember">{aboutConfig.role}</p>
             <p className="mt-1 font-mono text-sm text-text-muted">
               {aboutConfig.location}
@@ -57,7 +61,8 @@ export function AboutSection() {
             <div className="mt-8 flex flex-col gap-3 border-t border-white/10 pt-6">
               <a
                 href={aboutConfig.links.email}
-                className="text-sm font-semibold text-ember transition hover:text-flame focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ember"
+                aria-label={`Email ${aboutConfig.shortName}`}
+                className="text-link text-sm font-semibold text-ember transition hover:text-flame focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ember"
               >
                 Email →
               </a>
@@ -65,20 +70,22 @@ export function AboutSection() {
                 href={aboutConfig.links.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm font-semibold text-text-muted transition hover:text-text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ember"
+                className="text-link text-sm font-semibold text-text-muted transition hover:text-text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ember"
               >
                 GitHub →
+                <span className="sr-only"> (opens in new tab)</span>
               </a>
               <a
                 href={aboutConfig.links.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm font-semibold text-text-muted transition hover:text-text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ember"
+                className="text-link text-sm font-semibold text-text-muted transition hover:text-text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ember"
               >
                 LinkedIn →
+                <span className="sr-only"> (opens in new tab)</span>
               </a>
             </div>
-          </aside>
+          </div>
         </div>
       </div>
     </section>

@@ -27,13 +27,22 @@ Push to deploy visibility changes on Vercel.
 
 ## Refresh after creating a new repo
 
-Three options (fastest first):
+[`ativscrum`](https://github.com/Inn-Keeper/ativscrum) and any other new repo owned by Inn-Keeper appears automatically once GitHub returns it — no config entry required unless you want custom copy or `visible: false`.
 
-1. **On-demand** — `pnpm refresh` (calls `POST /api/revalidate?secret=...`)
-2. **Automatic** — ISR refreshes hourly on Vercel
-3. **Webhook** — GitHub `repository` events → your `/api/revalidate` URL
+Three ways to refresh:
 
-Set `REVALIDATION_SECRET` in `.env.local` and Vercel project settings.
+1. **Sync script (recommended)** — lists visible repos from GitHub, then revalidates the live site:
+
+   ```bash
+   pnpm sync          # fetch list + revalidate PORTFOLIO_URL
+   pnpm sync:dry      # preview only, no revalidate
+   ```
+
+2. **Revalidate only** — `pnpm refresh` (calls `POST /api/revalidate?secret=...`)
+3. **Automatic** — ISR refreshes hourly on Vercel
+4. **Webhook** — GitHub `repository` events → your `/api/revalidate` URL
+
+Set `REVALIDATION_SECRET` and `PORTFOLIO_URL` in `.env.local` (and Vercel) for on-demand refresh.
 
 ## Environment variables
 
@@ -41,7 +50,7 @@ Set `REVALIDATION_SECRET` in `.env.local` and Vercel project settings.
 |----------|----------|---------|
 | `GITHUB_TOKEN` | Production + private repos | Inn-Keeper PAT with `repo` scope; fetches public + private repos |
 | `REVALIDATION_SECRET` | Production | Protects on-demand refresh endpoint |
-| `PORTFOLIO_URL` | Local refresh | Base URL for `pnpm refresh` |
+| `PORTFOLIO_URL` | `pnpm sync` / `pnpm refresh` | Base URL to revalidate (e.g. `https://innkeeper-forge.vercel.app`) |
 
 Private repo names/descriptions appear on the deployed site. Use `visible: false` in config to hide sensitive repos.
 

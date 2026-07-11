@@ -49,6 +49,66 @@ body {
   font-family: var(--font-dm-sans), system-ui, sans-serif;
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.skip-link {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.skip-link:focus-visible {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 50;
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 0.75rem 1.25rem;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  border-radius: 9999px;
+  background: var(--ember);
+  color: var(--bg-deep);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  outline: 2px solid var(--ember);
+  outline-offset: 2px;
+}
+
+.text-link {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: transparent;
+  transition:
+    color 0.15s,
+    text-decoration-color 0.15s;
+}
+
+.text-link:hover,
+.text-link:focus-visible {
+  text-decoration-color: currentColor;
+}
+
 ::selection {
   background: rgba(245, 158, 11, 0.35);
   color: var(--text-primary);
@@ -170,5 +230,12 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .forge-innkeeper-idle {
     animation: none !important;
+  }
+
+  .gradient-text {
+    background: none;
+    -webkit-background-clip: unset;
+    background-clip: unset;
+    color: var(--ember);
   }
 }

@@ -26,6 +26,13 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
     return projects.filter((project) => project.language === activeLanguage);
   }, [activeLanguage, projects]);
 
+  const filterAnnouncement =
+    filtered.length === 0
+      ? "No projects match this filter."
+      : `${filtered.length} project${filtered.length === 1 ? "" : "s"} shown${
+          activeLanguage ? ` for ${activeLanguage}` : ""
+        }.`;
+
   return (
     <section id="projects" className="px-6 pb-24">
       <div className="mx-auto max-w-6xl">
@@ -41,6 +48,10 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
           />
         </div>
 
+        <p aria-live="polite" aria-atomic="true" className="sr-only">
+          {filterAnnouncement}
+        </p>
+
         <div className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-2">
           {filtered.map((project, index) => (
             <ProjectCard key={project.slug} project={project} index={index} />
@@ -48,7 +59,9 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
         </div>
 
         {filtered.length === 0 ? (
-          <p className="mt-10 text-text-muted">No projects match this filter.</p>
+          <p className="mt-10 text-text-muted" aria-hidden="true">
+            No projects match this filter.
+          </p>
         ) : null}
       </div>
     </section>

@@ -26,7 +26,7 @@ export function LanguageFilter({
             type="button"
             onClick={() => onChange(language)}
             aria-pressed={selected}
-            className={`rounded-full border px-4 py-2 font-mono text-xs uppercase tracking-wide transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ember ${
+            className={`min-h-11 rounded-full border px-4 py-2 font-mono text-xs uppercase tracking-wide transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ember ${
               selected
                 ? "border-ember bg-ember/15 text-ember"
                 : "border-white/10 text-text-muted hover:border-ember/30 hover:text-text-primary"
