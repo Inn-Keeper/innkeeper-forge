@@ -49,8 +49,13 @@ Private repo names/descriptions appear on the deployed site. Use `visible: false
 
 1. Push to GitHub
 2. Import repo in Vercel
-3. Add `GITHUB_TOKEN` and `REVALIDATION_SECRET` env vars
-4. Optional: GitHub webhook → `https://your-domain/api/revalidate?secret=YOUR_SECRET`
+3. **Required:** add environment variables in Vercel → Project → Settings → Environment Variables:
+   - `GITHUB_TOKEN` — Inn-Keeper classic PAT with **`repo`** scope (Production + Preview)
+   - `REVALIDATION_SECRET` — random secret for `/api/revalidate` (Production)
+4. **Redeploy** after adding env vars (Deployments → … → Redeploy)
+5. Optional: GitHub webhook → `https://your-domain/api/revalidate?secret=YOUR_SECRET`
+
+Without `GITHUB_TOKEN` on Vercel, the build fails or only public repos appear.
 
 ## Next.js concepts used
 

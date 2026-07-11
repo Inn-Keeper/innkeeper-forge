@@ -28,7 +28,6 @@ export function ForgeBackdrop() {
 
       {/* Forge scene — innkeeper + hearth */}
       <div className="absolute bottom-0 left-1/2 flex w-[min(860px,98vw)] -translate-x-1/2 items-end justify-center">
-        <InnkeeperSilhouette className="hidden sm:block w-[130px] md:w-[150px] shrink-0 -mr-6 md:-mr-10 mb-1 opacity-95" />
       <svg
         className="w-full max-w-[720px] shrink text-[#1a1512]"
         viewBox="0 0 720 280"
@@ -110,6 +109,7 @@ export function ForgeBackdrop() {
           strokeLinecap="round"
         />
       </svg>
+        <InnkeeperSilhouette className="hidden sm:block w-[130px] md:w-[150px] shrink-0 -ml-6 md:-ml-10 mb-1 opacity-95 -scale-x-100" />
       </div>
 
       {/* Rising sparks from the hearth */}

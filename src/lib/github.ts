@@ -73,12 +73,6 @@ async function fetchAuthenticatedRepos(token: string) {
 }
 
 async function fetchPublicRepos(username: string) {
-  if (process.env.NODE_ENV !== "production") {
-    console.warn(
-      "[innkeeper-forge] GITHUB_TOKEN not set — fetching public repos only.",
-    );
-  }
-
   const headers = buildHeaders();
   const baseUrl = `https://api.github.com/users/${username}/repos?type=owner`;
   return filterRepos(await fetchAllPages(baseUrl, headers));
@@ -91,5 +85,15 @@ export async function fetchGitHubRepos(username: string): Promise<GitHubRepo[]> 
     return fetchAuthenticatedRepos(token);
   }
 
+  if (process.env.VERCEL === "1" || process.env.NODE_ENV === "production") {
+    throw new Error(
+      "GITHUB_TOKEN is required on Vercel to include private repositories. " +
+        "Add it under Project Settings → Environment Variables (Production), then redeploy.",
+    );
+  }
+
+  console.warn(
+    "[innkeeper-forge] GITHUB_TOKEN not set — fetching public repos only.",
+  );
   return fetchPublicRepos(username);
 }
