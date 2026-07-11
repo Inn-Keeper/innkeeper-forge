@@ -26,7 +26,7 @@ export const portfolioConfig = {
       description: "Booking system experiment built with Next.js.",
     },
     "vizite-web": {
-      visible: true,
+      visible: false,
       span: "medium",
       description: "Next.js web frontend experiment.",
     },
