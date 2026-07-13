@@ -23,9 +23,10 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://innkeeper-forge.vercel.app"),
   title: "Innkeeper Forge",
   description:
-    "Projects and experiments from the workshop — a GitHub portfolio by Inn-Keeper.",
+    "Projects and experiments from the workshop. A GitHub portfolio by Inn-Keeper.",
   icons: {
     icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
     apple: [{ url: "/apple-icon.svg", type: "image/svg+xml" }],
@@ -33,7 +34,9 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Innkeeper Forge",
     description:
-      "Projects and experiments from the workshop — a GitHub portfolio by Inn-Keeper.",
+      "Projects and experiments from the workshop. A GitHub portfolio by Inn-Keeper.",
+    url: "/",
+    siteName: "Innkeeper Forge",
     type: "website",
   },
 };

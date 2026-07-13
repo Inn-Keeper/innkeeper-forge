@@ -3,9 +3,21 @@ import type { RepoConfig } from "@/types/project";
 export const portfolioConfig = {
   githubUsername: "Inn-Keeper",
   defaults: {
-    visible: true,
+    visible: false,
   },
   repos: {
+    "tech-refresh": {
+      visible: false,
+      description:
+        "Grip hiring pipeline tooling with funnel analytics, velocity tracking, and Supabase auth.",
+    },
+    "intygy": {
+      visible: true,
+      featured: true,
+      span: "large",
+      description:
+        "Accessibility compliance reviewed in every pull request. Blocks WCAG 2.2 regressions and builds EN 301 549 evidence dossiers.",
+    },
     "dev-panel": {
       visible: true,
       featured: true,
@@ -19,28 +31,6 @@ export const portfolioConfig = {
       span: "large",
       description:
         "Spring Boot hiring-pipeline analytics and reminders over Grip's Supabase Postgres.",
-    },
-    "next-playground": {
-      visible: true,
-      span: "medium",
-      description: "Booking system experiment built with Next.js.",
-    },
-    "vizite-web": {
-      visible: false,
-      span: "medium",
-      description: "Next.js web frontend experiment.",
-    },
-    "tech-refresh": {
-      visible: false,
-      description:
-        "Grip — hiring pipeline tooling with funnel analytics, velocity tracking, and Supabase auth.",
-    },
-    "intygy": {
-      visible: true,
-      featured: true,
-      span: "large",
-      description:
-        "Accessibility compliance reviewed in every pull request — blocks WCAG 2.2 regressions and builds EN 301 549 evidence dossiers.",
     },
     "midiremapper": {
       visible: true,
@@ -58,7 +48,7 @@ export const portfolioConfig = {
       visible: true,
       span: "medium",
       description:
-        "React/Vite frontend for PsychoAI — a psychometric interview reporting application.",
+        "React/Vite frontend for PsychoAI, a psychometric interview reporting application.",
     },
     "psycho-api": {
       visible: true,
@@ -66,17 +56,27 @@ export const portfolioConfig = {
       description:
         "Python backend for PsychoAI psychometric interview analysis and reporting.",
     },
+    "next-playground": {
+      visible: true,
+      span: "medium",
+      description: "Booking system experiment built with Next.js.",
+    },
+    "vizite-web": {
+      visible: false,
+      span: "medium",
+      description: "Next.js web frontend experiment.",
+    },
     "aurelia-playground": {
       visible: true,
       span: "medium",
       description:
-        "Aurelia 2 learning project — movie browser with routing, TMDB search, infinite scroll, and saved movies.",
+        "Aurelia 2 learning project with routing, TMDB search, infinite scroll, and saved movies.",
     },
     "ignited-website": {
       visible: true,
       span: "medium",
       description:
-        "Ignited band website prototype — built from Figma design as a code bundle.",
+        "Ignited band website prototype built from a Figma design as a code bundle.",
     },
     "portrait-web": {
       visible: true,
@@ -84,7 +84,7 @@ export const portfolioConfig = {
       description: "Web frontend for the Portrait project.",
     },
     "portrait-admin": {
-      visible: true,
+      visible: false,
       span: "medium",
       description: "Admin dashboard for the Portrait project.",
     },
@@ -96,7 +96,7 @@ export const portfolioConfig = {
     "snow-brawl": {
       visible: true,
       span: "medium",
-      description: "C++ game experiment — snow-themed brawl prototype.",
+      description: "C++ game experiment with a snow-themed brawl prototype.",
     },
   } satisfies Record<string, RepoConfig>,
 };

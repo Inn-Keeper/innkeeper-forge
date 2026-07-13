@@ -17,7 +17,6 @@ export function StatsStrip({ stats }: StatsStripProps) {
   const items = [
     { label: "Projects", value: String(stats.repoCount) },
     { label: "Languages", value: stats.languages.join(", ") || "—" },
-    { label: "Stars", value: String(stats.totalStars) },
     { label: "Last activity", value: formatDate(stats.lastActivity) },
   ];
 
