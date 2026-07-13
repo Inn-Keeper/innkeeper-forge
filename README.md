@@ -20,14 +20,14 @@ Edit [`src/data/repos.config.ts`](src/data/repos.config.ts):
 ```ts
 "tech-refresh": { visible: false },  // hidden
 "dev-panel": { visible: true, featured: true },
-// repos not listed → shown automatically when GitHub returns them
+// repos not listed → hidden by default
 ```
 
 Push to deploy visibility changes on Vercel.
 
 ## Refresh after creating a new repo
 
-[`ativscrum`](https://github.com/Inn-Keeper/ativscrum) and any other new repo owned by Inn-Keeper appears automatically once GitHub returns it — no config entry required unless you want custom copy or `visible: false`.
+Add a new repository to `src/data/repos.config.ts` with `visible: true`, then refresh once GitHub returns it.
 
 Three ways to refresh:
 

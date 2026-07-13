@@ -6,6 +6,14 @@ export const portfolioConfig = {
     visible: false,
   },
   repos: {
+    "ativscrum": {
+      visible: true,
+      span: "medium",
+      demoUrl: "https://ativscrum.vercel.app",
+      technologies: ["React 19", "Motion", "dnd-kit", "Tailwind CSS 4"],
+      description:
+        "A 2013 university Scrum tool, reborn as an animated 2026 single-page app.",
+    },
     "tech-refresh": {
       visible: true,
       featured: true,
