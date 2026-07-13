@@ -6,6 +6,7 @@ export interface RepoConfig {
   span?: ProjectSpan;
   description?: string;
   demoUrl?: string | null;
+  technologies?: string[];
 }
 
 export interface Project {
@@ -13,6 +14,7 @@ export interface Project {
   slug: string;
   description: string;
   language: string | null;
+  technologies: string[];
   stars: number;
   forks: number;
   topics: string[];

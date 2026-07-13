@@ -45,7 +45,7 @@ export function Hero() {
           {...fadeUp(0.2)}
           className="mt-6 max-w-xl text-lg text-text-muted sm:text-xl"
         >
-          Projects and experiments from the workshop — forged in code, synced
+          Projects and experiments from the workshop, forged in code and synced
           from GitHub.
         </motion.p>
         <motion.div

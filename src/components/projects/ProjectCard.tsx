@@ -54,9 +54,11 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
               {project.language}
             </Badge>
           ) : null}
-          <span className="font-mono text-xs text-text-muted">
-            ★ {project.stars} · {project.forks} forks
-          </span>
+          {project.technologies.slice(0, 5).map((technology) => (
+            <Badge key={technology} color="#B8AEA4">
+              {technology}
+            </Badge>
+          ))}
           <span className="font-mono text-xs text-text-muted">
             Updated {formatDate(project.updatedAt)}
           </span>
@@ -83,7 +85,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             className="text-link text-sm font-semibold text-ember transition hover:text-flame focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ember"
           >
             View on GitHub
-            <span className="sr-only"> — {project.name}</span> →
+            <span className="sr-only">: {project.name}</span> →
             <span className="sr-only"> (opens in new tab)</span>
           </a>
           {project.demoUrl ? (
@@ -94,7 +96,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
               className="text-link text-sm font-semibold text-text-muted transition hover:text-text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ember"
             >
               Live demo
-              <span className="sr-only"> — {project.name}</span> →
+              <span className="sr-only">: {project.name}</span> →
               <span className="sr-only"> (opens in new tab)</span>
             </a>
           ) : null}

@@ -31,6 +31,7 @@ export async function getProjects(): Promise<Project[]> {
         slug: repo.name,
         description,
         language: repo.language,
+        technologies: config?.technologies ?? [],
         stars: repo.stargazers_count,
         forks: repo.forks_count,
         topics: repo.topics,
