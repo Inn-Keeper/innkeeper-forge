@@ -7,7 +7,7 @@ export const portfolioConfig = {
   },
   repos: {
     "tech-refresh": {
-      visible: false,
+      visible: true,
       description:
         "Grip hiring pipeline tooling with funnel analytics, velocity tracking, and Supabase auth.",
     },
@@ -17,6 +17,12 @@ export const portfolioConfig = {
       span: "large",
       description:
         "Accessibility compliance reviewed in every pull request. Blocks WCAG 2.2 regressions and builds EN 301 549 evidence dossiers.",
+    },
+    "psycho-api": {
+      visible: true,
+      span: "medium",
+      description:
+        "Python backend for PsychoAI psychometric interview analysis and reporting.",
     },
     "dev-panel": {
       visible: true,
@@ -50,12 +56,7 @@ export const portfolioConfig = {
       description:
         "React/Vite frontend for PsychoAI, a psychometric interview reporting application.",
     },
-    "psycho-api": {
-      visible: true,
-      span: "medium",
-      description:
-        "Python backend for PsychoAI psychometric interview analysis and reporting.",
-    },
+
     "next-playground": {
       visible: true,
       span: "medium",
