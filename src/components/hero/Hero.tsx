@@ -20,7 +20,7 @@ export function Hero() {
         };
 
   return (
-    <section className="relative overflow-hidden px-6 pb-32 pt-28 sm:pb-40 sm:pt-32">
+    <section className="forge-light-cycle relative overflow-hidden px-6 pb-32 pt-28 sm:pb-40 sm:pt-32">
       <EmberField />
       <div className="relative z-10 mx-auto max-w-6xl">
         <motion.p
@@ -39,7 +39,7 @@ export function Hero() {
           {...fadeUp(0.1)}
           className="font-display mt-4 max-w-3xl text-5xl font-extrabold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl"
         >
-          <span className="gradient-text">Innkeeper Forge</span>
+          <span className="gradient-text forge-lit-text">Innkeeper Forge</span>
         </motion.h1>
         <motion.p
           {...fadeUp(0.2)}

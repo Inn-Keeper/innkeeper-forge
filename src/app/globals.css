@@ -204,10 +204,151 @@ body {
   }
 }
 
+/* Firelight — one animated variable lights the whole hero; spikes on the hammer strike */
+@property --forge-light {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0.5;
+}
+
+.forge-light-cycle {
+  animation: forge-light 8s ease-in-out infinite;
+}
+
+@keyframes forge-light {
+  0%,
+  100% {
+    --forge-light: 0.45;
+  }
+  12% {
+    --forge-light: 0.62;
+  }
+  23% {
+    --forge-light: 0.4;
+  }
+  37% {
+    --forge-light: 0.66;
+  }
+  48% {
+    --forge-light: 0.48;
+  }
+  58% {
+    --forge-light: 0.4;
+  }
+  60% {
+    --forge-light: 1;
+  }
+  62% {
+    --forge-light: 0.9;
+  }
+  66% {
+    --forge-light: 0.55;
+  }
+  80% {
+    --forge-light: 0.6;
+  }
+  90% {
+    --forge-light: 0.44;
+  }
+}
+
+.forge-ambient {
+  opacity: calc(0.35 + var(--forge-light, 0.5) * 0.65);
+}
+
+.forge-lit-text {
+  text-shadow: 0 2px 28px rgb(245 158 11 / calc(var(--forge-light, 0.5) * 0.45));
+}
+
+.forge-lit-rim {
+  filter: drop-shadow(0 0 12px rgb(245 158 11 / calc(var(--forge-light, 0.5) * 0.4)));
+}
+
+/* Hammer strike — flash, spark burst, and jolt share the 8s light cycle (strike at 60%) */
+.forge-strike-flash {
+  opacity: 0;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(251, 191, 36, 0.9),
+    rgba(234, 88, 12, 0.4) 45%,
+    transparent 70%
+  );
+  animation: forge-strike-flash 8s linear infinite;
+}
+
+@keyframes forge-strike-flash {
+  0%,
+  59.8%,
+  66%,
+  100% {
+    opacity: 0;
+  }
+  60.4% {
+    opacity: 0.6;
+  }
+  62% {
+    opacity: 0.25;
+  }
+}
+
+.forge-spark-burst {
+  opacity: 0;
+  box-shadow: 0 0 6px rgba(245, 158, 11, 0.9);
+  animation: forge-spark-burst 8s linear infinite;
+}
+
+@keyframes forge-spark-burst {
+  0%,
+  59.9% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0;
+  }
+  60.4% {
+    opacity: 1;
+  }
+  68% {
+    transform: translate(var(--burst-x, 0px), var(--burst-y, -40px)) scale(0.7);
+    opacity: 0.8;
+  }
+  76%,
+  100% {
+    transform: translate(calc(var(--burst-x, 0px) * 1.3), calc(var(--burst-y, -40px) * 0.1))
+      scale(0.3);
+    opacity: 0;
+  }
+}
+
+.forge-strike-shake {
+  animation: forge-strike-shake 8s linear infinite;
+}
+
+/* Jolts via transform, which stacks on top of Tailwind's translate-based centering */
+@keyframes forge-strike-shake {
+  0%,
+  59.9%,
+  63.5%,
+  100% {
+    transform: translate(0, 0);
+  }
+  60.4% {
+    transform: translate(1.5px, 1.5px);
+  }
+  61.6% {
+    transform: translate(-1px, -0.5px);
+  }
+  62.6% {
+    transform: translate(0.5px, 0.5px);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .forge-spark,
   .forge-fire-pulse,
-  .forge-shimmer {
+  .forge-shimmer,
+  .forge-light-cycle,
+  .forge-strike-flash,
+  .forge-spark-burst,
+  .forge-strike-shake {
     animation: none !important;
   }
 }

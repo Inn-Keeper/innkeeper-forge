@@ -3,6 +3,28 @@
 import { InnkeeperSilhouette } from "./InnkeeperSilhouette";
 
 const SPARK_COUNT = 18;
+const BURST_SPARK_COUNT = 12;
+
+const STRIKE_ANIMATIONS = [
+  "forge-light",
+  "forge-strike-flash",
+  "forge-spark-burst",
+  "forge-strike-shake",
+];
+// Just before the strike at 60% of the 8s cycle, so the ramp-up plays
+const STRIKE_AT_MS = 4750;
+
+function triggerStrike() {
+  document
+    .getAnimations()
+    .filter(
+      (a): a is CSSAnimation =>
+        a instanceof CSSAnimation && STRIKE_ANIMATIONS.includes(a.animationName),
+    )
+    .forEach((a) => {
+      a.currentTime = STRIKE_AT_MS;
+    });
+}
 
 function seeded(index: number, salt: number) {
   return (((index + 1) * 7919 + salt * 104729) % 233280) / 233280;
@@ -18,16 +40,26 @@ export function ForgeBackdrop() {
     drift: -20 + seeded(i, 5) * 40,
   }));
 
+  const burstSparks = Array.from({ length: BURST_SPARK_COUNT }, (_, i) => ({
+    id: i,
+    x: -70 + seeded(i, 6) * 140,
+    y: -30 - seeded(i, 7) * 60,
+    size: 2 + seeded(i, 8) * 2.5,
+  }));
+
   return (
     <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
       {/* Warm ambient glow from the hearth */}
-      <div className="absolute inset-x-0 bottom-0 h-[55%] bg-[radial-gradient(ellipse_80%_60%_at_50%_100%,rgba(234,88,12,0.22),rgba(245,158,11,0.08)_45%,transparent_70%)]" />
+      <div className="forge-ambient absolute inset-x-0 bottom-0 h-[55%] bg-[radial-gradient(ellipse_80%_60%_at_50%_100%,rgba(234,88,12,0.22),rgba(245,158,11,0.08)_45%,transparent_70%)]" />
 
       {/* Stone/brick header band */}
       <div className="absolute inset-x-0 top-0 h-28 forge-bricks opacity-90" />
 
       {/* Forge scene — innkeeper + hearth */}
-      <div className="absolute bottom-0 left-1/2 flex w-[min(860px,98vw)] -translate-x-1/2 items-end justify-center">
+      <div
+        className="forge-strike-shake pointer-events-auto absolute bottom-0 left-1/2 flex w-[min(860px,98vw)] -translate-x-1/2 cursor-pointer items-end justify-center"
+        onClick={triggerStrike}
+      >
       <svg
         className="w-full max-w-[720px] shrink text-[#1a1512]"
         viewBox="0 0 720 280"
@@ -109,7 +141,7 @@ export function ForgeBackdrop() {
           strokeLinecap="round"
         />
       </svg>
-        <InnkeeperSilhouette className="hidden sm:block w-[130px] md:w-[150px] shrink-0 -ml-6 md:-ml-10 mb-1 opacity-95 -scale-x-100" />
+        <InnkeeperSilhouette className="forge-lit-rim hidden sm:block w-[130px] md:w-[150px] shrink-0 -ml-6 md:-ml-10 mb-1 opacity-95 -scale-x-100" />
       </div>
 
       {/* Rising sparks from the hearth */}
@@ -125,6 +157,23 @@ export function ForgeBackdrop() {
               animationDuration: `${spark.duration}s`,
               animationDelay: `${spark.delay}s`,
               ["--spark-drift" as string]: `${spark.drift}px`,
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Hammer strike — flash at the anvil + radial spark burst */}
+      <div className="forge-strike-flash absolute bottom-[16%] left-1/2 h-40 w-72 -translate-x-1/2" />
+      <div className="absolute inset-x-0 bottom-[22%] h-0">
+        {burstSparks.map((spark) => (
+          <span
+            key={spark.id}
+            className="forge-spark-burst absolute left-1/2 rounded-full bg-ember"
+            style={{
+              width: spark.size,
+              height: spark.size,
+              ["--burst-x" as string]: `${spark.x}px`,
+              ["--burst-y" as string]: `${spark.y}px`,
             }}
           />
         ))}
