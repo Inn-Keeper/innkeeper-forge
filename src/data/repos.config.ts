@@ -103,7 +103,6 @@ export const portfolioConfig = {
     },
     "linkcheck": {
       visible: true,
-      technologies: ["Go"],
       description: "Simple link checker implemented in Go.",
     },
     "portrait-web": {
