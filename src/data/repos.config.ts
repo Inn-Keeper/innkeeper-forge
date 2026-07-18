@@ -101,6 +101,11 @@ export const portfolioConfig = {
       description:
         "Ignited band website prototype built from a Figma design as a code bundle.",
     },
+    "linkcheck": {
+      visible: true,
+      technologies: ["Go"],
+      description: "Simple link checker implemented in Go.",
+    },
     "portrait-web": {
       visible: true,
       span: "medium",
