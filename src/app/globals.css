@@ -322,7 +322,7 @@ body {
   animation: forge-strike-shake 8s linear infinite;
 }
 
-/* Jolts via transform, which stacks on top of Tailwind's translate-based centering */
+/* Jolts the inner scene, leaving its centered wrapper untouched. */
 @keyframes forge-strike-shake {
   0%,
   59.9%,
