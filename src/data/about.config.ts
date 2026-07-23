@@ -27,6 +27,6 @@ export const aboutConfig = {
   links: {
     email: "mailto:daltonmcastro@gmail.com",
     github: `https://github.com/${portfolioConfig.githubUsername}`,
-    linkedin: "https://www.linkedin.com/in/daltonmcastro/",
+    linkedin: "https://www.linkedin.com/in/dalton-castro-5a724963",
   },
 };
