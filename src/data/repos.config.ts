@@ -60,11 +60,11 @@ export const portfolioConfig = {
       description:
         "macOS app for batch-converting drum MIDI files between library mappings. Drop files, detect, remap.",
     },
-    "stitcher": {
+    "stretchy": {
       visible: true,
       span: "medium",
       featured: true,
-      technologies: ["Expo", "React Native", "Vite", "TanStack", "Supabase"],
+      technologies: ["Expo", "React Native", "Skia", "Supabase"],
       description:
         "Mobile-first app that slices panoramas into Instagram 4:5 carousel tiles that flow as one continuous image.",
     },
@@ -126,6 +126,64 @@ export const portfolioConfig = {
       span: "medium",
       technologies: ["SFML", "Box2D", "EnTT"],
       description: "C++ game experiment with a snow-themed brawl prototype.",
+    },
+
+    "tripwire": {
+      visible: true,
+      featured: true,
+      span: "large",
+      technologies: ["Go", "Kafka", "React", "Server-Sent Events"],
+      description:
+        "Real-time fraud scoring pipeline. A Go worker-pool engine scores payment transactions against velocity, geo, amount, and merchant-risk rules, streaming verdicts to a live dashboard.",
+    },
+    "grip-ai-api": {
+      visible: true,
+      span: "medium",
+      technologies: ["FastAPI", "Pydantic", "Gemini", "Supabase"],
+      description:
+        "Talk-track grading service for Grip. Supabase-authenticated FastAPI with strict-output, evidence-required model grading.",
+    },
+    "ativscrum-ai-api": {
+      visible: true,
+      span: "medium",
+      technologies: ["FastAPI", "Pydantic", "httpx"],
+      description: "Portfolio-grade FastAPI AI service for ativScrum.",
+    },
+    "fretboard-chaos": {
+      visible: true,
+      span: "medium",
+      technologies: ["React", "Vite", "Tailwind CSS 4", "Web Audio API"],
+      description:
+        "Interactive guitar-theory workspace for learning the neck as connected geometry and musical motion, not isolated boxes to memorize.",
+    },
+    "testing-practices": {
+      visible: false,
+      span: "medium",
+      technologies: ["Vitest", "Playwright", "Stryker", "fast-check"],
+      description:
+        "Learning repo covering modern software testing practices, with references and a runnable TypeScript example per topic.",
+    },
+    "innkeeper-forge": {
+      visible: true,
+      span: "medium",
+      technologies: ["Next.js 16", "React 19", "Motion", "React Three Fiber"],
+      description:
+        "This portfolio. A dark forge-themed site that syncs its own project list from GitHub.",
+    },
+    "ativscrum-landing": {
+      visible: false,
+      span: "small",
+      description: "Portfolio landing page for ativScrum.",
+    },
+    "ativscrum-legacy": {
+      visible: false,
+      span: "small",
+      description: "Original 2013 ativScrum source, provenance for the rebuild.",
+    },
+    "stretchy-landing": {
+      visible: false,
+      span: "small",
+      description: "Portfolio landing page for Stretchy.",
     },
   } satisfies Record<string, RepoConfig>,
 };
