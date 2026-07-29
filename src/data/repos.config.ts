@@ -128,13 +128,13 @@ export const portfolioConfig = {
       description: "C++ game experiment with a snow-themed brawl prototype.",
     },
 
-    "tripwire": {
+    "lambari": {
       visible: true,
       featured: true,
       span: "large",
       technologies: ["Go", "Kafka", "React", "Server-Sent Events"],
       description:
-        "Real-time fraud scoring pipeline. A Go worker-pool engine scores payment transactions against velocity, geo, amount, and merchant-risk rules, streaming verdicts to a live dashboard.",
+        "Inspired on a tiny Brazilian fish, named after an Old Tupi word. Real-time fraud scoring pipeline. A Go worker-pool engine scores payment transactions against velocity, geo, amount, and merchant-risk rules, streaming verdicts to a live dashboard.",
     },
     "grip-ai-api": {
       visible: true,
