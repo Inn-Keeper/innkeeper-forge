@@ -60,9 +60,9 @@ export function ForgeBackdrop() {
         className="pointer-events-auto absolute bottom-0 left-1/2 w-[min(860px,98vw)] -translate-x-1/2 cursor-pointer"
         onClick={triggerStrike}
       >
-        <div className="forge-strike-shake flex w-full items-end justify-center">
+        <div className="forge-strike-shake relative mx-auto h-[280px] w-full max-w-[860px]">
           <svg
-            className="w-full max-w-[720px] shrink text-[#1a1512]"
+            className="absolute bottom-0 left-1/2 w-full max-w-[720px] -translate-x-1/2 text-[#1a1512]"
             viewBox="0 0 720 280"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -141,8 +141,9 @@ export function ForgeBackdrop() {
               fill="none"
               strokeLinecap="round"
             />
+
           </svg>
-          <InnkeeperSilhouette className="forge-lit-rim hidden sm:block w-[130px] md:w-[150px] shrink-0 -ml-6 md:-ml-10 mb-1 opacity-95 -scale-x-100" />
+          <InnkeeperSilhouette className="forge-lit-rim absolute bottom-0 left-[calc(50%+11rem)] z-10 hidden w-[130px] -scale-x-100 overflow-visible opacity-95 sm:block md:w-[150px]" />
         </div>
       </div>
 
