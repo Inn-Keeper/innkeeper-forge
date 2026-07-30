@@ -132,7 +132,7 @@ export const portfolioConfig = {
       visible: true,
       featured: true,
       span: "large",
-      technologies: ["Go", "Kafka", "React", "Server-Sent Events"],
+      technologies: ["Kafka", "React", "Server-Sent Events"],
       description:
         "Inspired on a tiny Brazilian fish, named after an Old Tupi word. Real-time fraud scoring pipeline. A Go worker-pool engine scores payment transactions against velocity, geo, amount, and merchant-risk rules, streaming verdicts to a live dashboard.",
     },
