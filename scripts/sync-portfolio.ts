@@ -1,7 +1,26 @@
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
+import { fileURLToPath } from "node:url";
 import { portfolioConfig } from "../src/data/repos.config";
+import { fetchGitHubRepos } from "../src/lib/github";
 import { getProjects } from "../src/lib/projects";
+
+const reposConfigPath = resolve(process.cwd(), "src/data/repos.config.ts");
+const reposConfigEnd = "  } satisfies Record<string, RepoConfig>,";
+
+export function appendMissingRepoEntries(source: string, repoNames: string[]) {
+  const entries = [...new Set(repoNames)]
+    .sort()
+    .map((name) => `    ${JSON.stringify(name)}: {\n      visible: true,\n    },\n`)
+    .join("");
+
+  if (!entries) return source;
+  if (!source.includes(reposConfigEnd)) {
+    throw new Error("Could not find the repos.config.ts insertion point.");
+  }
+
+  return source.replace(reposConfigEnd, `${entries}${reposConfigEnd}`);
+}
 
 function loadEnvLocal() {
   const path = resolve(process.cwd(), ".env.local");
@@ -63,8 +82,28 @@ async function main() {
     );
   }
 
-  const projects = await getProjects();
+  const repos = await fetchGitHubRepos(portfolioConfig.githubUsername);
   const configured = new Set(Object.keys(portfolioConfig.repos));
+  const missing = repos.map((repo) => repo.name).filter((name) => !configured.has(name));
+
+  if (missing.length > 0) {
+    console.log(`\n${dryRun ? "Would add" : "Added"} ${missing.length} repository ${missing.length === 1 ? "entry" : "entries"}:`);
+    for (const name of missing) console.log(`  • ${name}`);
+
+    if (dryRun) {
+      console.log("\nDry run — no config changes or revalidation requested.");
+      return;
+    }
+
+    writeFileSync(
+      reposConfigPath,
+      appendMissingRepoEntries(readFileSync(reposConfigPath, "utf8"), missing),
+    );
+    console.log("\nCommit and push src/data/repos.config.ts to deploy the new projects.");
+    return;
+  }
+
+  const projects = await getProjects();
   const hidden = Object.entries(portfolioConfig.repos)
     .filter(([, config]) => config.visible === false)
     .map(([name]) => name);
@@ -84,22 +123,12 @@ async function main() {
     console.log(`    ${project.language ?? "—"} · updated ${project.updatedAt.slice(0, 10)}`);
   }
 
-  const visibleNames = new Set(projects.map((project) => project.name));
-  const newToConfig = projects
-    .map((project) => project.name)
-    .filter((name) => !configured.has(name));
-
-  if (newToConfig.length > 0) {
-    console.log(`\nNot listed in repos.config.ts (shown via defaults):`);
-    for (const name of newToConfig) {
-      console.log(`  • ${name}`);
-    }
-  }
+  const repoNames = new Set(repos.map((repo) => repo.name));
 
   if (hidden.length > 0) {
     console.log(`\nHidden via repos.config.ts:`);
     for (const name of hidden) {
-      const onGitHub = visibleNames.has(name) ? "" : " (not returned by GitHub)";
+      const onGitHub = repoNames.has(name) ? "" : " (not returned by GitHub)";
       console.log(`  • ${name}${onGitHub}`);
     }
   }
@@ -114,7 +143,9 @@ async function main() {
   }
 }
 
-main().catch((error: unknown) => {
-  console.error(error instanceof Error ? error.message : error);
-  process.exit(1);
-});
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
+  main().catch((error: unknown) => {
+    console.error(error instanceof Error ? error.message : error);
+    process.exit(1);
+  });
+}

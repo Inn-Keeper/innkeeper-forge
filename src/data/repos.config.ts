@@ -192,5 +192,11 @@ export const portfolioConfig = {
       span: "small",
       description: "Portfolio landing page for Stretchy.",
     },
+    "matematica": {
+      visible: true,
+    },
+    "matematica-ai-api": {
+      visible: true,
+    },
   } satisfies Record<string, RepoConfig>,
 };

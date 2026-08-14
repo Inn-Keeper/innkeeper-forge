@@ -27,15 +27,13 @@ Push to deploy visibility changes on Vercel.
 
 ## Refresh after creating a new repo
 
-Add a new repository to `src/data/repos.config.ts` with `visible: true`, then refresh once GitHub returns it.
+Four ways to refresh:
 
-Three ways to refresh:
-
-1. **Sync script (recommended)** — lists visible repos from GitHub, then revalidates the live site:
+1. **Sync script (recommended)** — adds any GitHub repositories missing from `repos.config.ts` as visible entries. Commit and push those generated changes; later runs revalidate the live site:
 
    ```bash
-   pnpm sync          # fetch list + revalidate PORTFOLIO_URL
-   pnpm sync:dry      # preview only, no revalidate
+   pnpm sync          # add missing entries, or revalidate when none are missing
+   pnpm sync:dry      # preview missing entries only
    ```
 
 2. **Revalidate only** — `pnpm refresh` (calls `POST /api/revalidate?secret=...`)
