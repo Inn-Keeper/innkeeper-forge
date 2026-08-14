@@ -82,6 +82,13 @@ export const portfolioConfig = {
       technologies: ["Next.js", "NextAuth.js", "Redux Toolkit"],
       description: "Booking system experiment built with Next.js.",
     },
+    "kotlin-study": {
+      visible: true,
+      span: "medium",
+      technologies: ["Kotlin", "Gradle", "Ktor", "kotlinx.serialization"],
+      description:
+        "Terminal task tracker for learning idiomatic Kotlin, with JSON persistence, Ktor enrichment, structured concurrency, and raw terminal input.",
+    },
     "vizite-web": {
       visible: false,
       span: "medium",

@@ -9,3 +9,7 @@ test("linkcheck is included in the synced portfolio", () => {
 test("lambari is included in the synced portfolio", () => {
   assert.equal(portfolioConfig.repos.lambari.visible, true);
 });
+
+test("kotlin-study is included in the synced portfolio", () => {
+  assert.equal(portfolioConfig.repos["kotlin-study"].visible, true);
+});
