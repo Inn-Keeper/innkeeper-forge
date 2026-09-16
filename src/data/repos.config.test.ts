@@ -10,6 +10,10 @@ test("lambari is included in the synced portfolio", () => {
   assert.equal(portfolioConfig.repos.lambari.visible, true);
 });
 
+test("matematica shows up in the React Native filter", () => {
+  assert.ok(portfolioConfig.repos.matematica.technologies.includes("React Native"));
+});
+
 test("kotlin-study is included in the synced portfolio", () => {
   assert.equal(portfolioConfig.repos["kotlin-study"].visible, true);
 });

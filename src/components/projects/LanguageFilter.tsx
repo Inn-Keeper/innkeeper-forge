@@ -15,7 +15,7 @@ export function LanguageFilter({
   const options = [null, ...languages];
 
   return (
-    <div className="flex flex-wrap gap-2" role="group" aria-label="Filter by language">
+    <div className="flex flex-wrap gap-2" role="group" aria-label="Filter by language or framework">
       {options.map((language) => {
         const selected = active === language;
         const label = language ?? "All";

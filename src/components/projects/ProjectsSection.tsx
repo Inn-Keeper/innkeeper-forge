@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import { highlightedTech } from "@/lib/languages";
 import type { Project } from "@/types/project";
 import { LanguageFilter } from "./LanguageFilter";
 import { ProjectCard } from "./ProjectCard";
@@ -13,17 +14,25 @@ interface ProjectsSectionProps {
 export function ProjectsSection({ projects }: ProjectsSectionProps) {
   const [activeLanguage, setActiveLanguage] = useState<string | null>(null);
 
-  const languages = useMemo(
-    () =>
-      [
-        ...new Set(projects.map((project) => project.language).filter(Boolean)),
-      ] as string[],
-    [projects],
-  );
+  const languages = useMemo(() => {
+    const projectLanguages = [
+      ...new Set(projects.map((project) => project.language).filter(Boolean)),
+    ] as string[];
+    const hasHighlightedTech = projects.some((project) =>
+      project.technologies.includes(highlightedTech.name),
+    );
+    return hasHighlightedTech
+      ? [highlightedTech.name, ...projectLanguages]
+      : projectLanguages;
+  }, [projects]);
 
   const filtered = useMemo(() => {
     if (!activeLanguage) return projects;
-    return projects.filter((project) => project.language === activeLanguage);
+    return projects.filter(
+      (project) =>
+        project.language === activeLanguage ||
+        project.technologies.includes(activeLanguage),
+    );
   }, [activeLanguage, projects]);
 
   const filterAnnouncement =

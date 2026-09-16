@@ -194,6 +194,7 @@ export const portfolioConfig = {
     },
     "matematica": {
       visible: true,
+      technologies: ["Expo", "React Native", "Vite", "Supabase"],
     },
     "matematica-ai-api": {
       visible: true,

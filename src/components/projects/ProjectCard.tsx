@@ -2,7 +2,7 @@
 
 import { motion } from "motion/react";
 import { Badge } from "@/components/ui/Badge";
-import { getLanguageColor } from "@/lib/languages";
+import { getLanguageColor, highlightedTech } from "@/lib/languages";
 import { usePrefersReducedMotion } from "@/lib/motion";
 import type { Project } from "@/types/project";
 
@@ -54,11 +54,18 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
               {project.language}
             </Badge>
           ) : null}
-          {project.technologies.slice(0, 5).map((technology) => (
-            <Badge key={technology} color="#B8AEA4">
-              {technology}
-            </Badge>
-          ))}
+          {project.technologies.slice(0, 5).map((technology) => {
+            const highlighted = technology === highlightedTech.name;
+            return (
+              <Badge
+                key={technology}
+                color={highlighted ? highlightedTech.color : "#B8AEA4"}
+                highlight={highlighted}
+              >
+                {technology}
+              </Badge>
+            );
+          })}
           <span className="font-mono text-xs text-text-muted">
             Updated {formatDate(project.updatedAt)}
           </span>

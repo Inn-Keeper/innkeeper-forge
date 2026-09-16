@@ -7,6 +7,8 @@ const languageColors: Record<string, string> = {
   Go: "#56B6C2",
 };
 
+export const highlightedTech = { name: "React Native", color: "#61DAFB" };
+
 export function getLanguageColor(language: string | null): string {
   if (!language) return "#9C9288";
   return languageColors[language] ?? "#9C9288";
