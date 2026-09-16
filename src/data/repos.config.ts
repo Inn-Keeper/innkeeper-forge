@@ -32,6 +32,14 @@ export const portfolioConfig = {
       description:
         "Accessibility compliance reviewed in every pull request. Blocks WCAG 2.2 regressions and builds EN 301 549 evidence dossiers.",
     },
+    "assembly-demo": {
+      visible: true,
+      title: "Assembly",
+      featured: true,
+      technologies: ["Next.js", "React Three Fiber", "WebSockets", "PostgreSQL"],
+      description:
+        "Collaborative 3D hardware design review. Reviewers join a shared room, inspect assemblies in exploded or isolated views, and comment live over WebSockets, with SQLite or Postgres persistence.",
+    },
     "psycho-api": {
       visible: true,
       title: "PsychoAI API",

@@ -13,9 +13,15 @@ test("every visible repo has a display title and description", () => {
   }
 });
 
-test("only the four flagship projects are featured", () => {
+test("only the flagship projects are featured", () => {
   const featured = repos.filter(([, config]) => config.featured).map(([slug]) => slug);
-  assert.deepEqual(featured.sort(), ["intygy", "lambari", "stretchy", "tech-refresh"]);
+  assert.deepEqual(featured.sort(), [
+    "assembly-demo",
+    "intygy",
+    "lambari",
+    "stretchy",
+    "tech-refresh",
+  ]);
 });
 
 test("linkcheck is included in the synced portfolio", () => {
