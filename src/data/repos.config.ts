@@ -1,4 +1,4 @@
-import type { RepoConfig } from "@/types/project";
+import type { CollabConfig, RepoConfig } from "@/types/project";
 
 export const portfolioConfig = {
   githubUsername: "Inn-Keeper",
@@ -200,4 +200,15 @@ export const portfolioConfig = {
       visible: true,
     },
   } satisfies Record<string, RepoConfig>,
+  // Repos owned by someone else, listed by hand (not fetched from GitHub).
+  collaborations: {
+    "speedz-tail": {
+      owner: "joelpiccoli",
+      role: "UI/UX, game experience, and soundtrack (full composition and arrangements)",
+      inProgress: true,
+      span: "medium",
+      technologies: ["Pro Tools"],
+      description: "Collaborative game project, currently in development.",
+    },
+  } satisfies Record<string, CollabConfig>,
 };

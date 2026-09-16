@@ -1,6 +1,12 @@
 import { portfolioConfig } from "@/data/repos.config";
 import { fetchGitHubRepos } from "@/lib/github";
-import type { PortfolioStats, Project, ProjectSpan, RepoConfig } from "@/types/project";
+import type {
+  CollabConfig,
+  PortfolioStats,
+  Project,
+  ProjectSpan,
+  RepoConfig,
+} from "@/types/project";
 
 function resolveSpan(featured: boolean, configured?: ProjectSpan): ProjectSpan {
   if (configured) return configured;
@@ -12,11 +18,43 @@ function getRepoConfig(name: string): RepoConfig | undefined {
   return portfolioConfig.repos[name as keyof typeof portfolioConfig.repos];
 }
 
+function getCollabProjects(): Project[] {
+  const collaborations: Record<string, CollabConfig> =
+    portfolioConfig.collaborations;
+
+  return Object.entries(collaborations)
+    .filter(([, config]) => config.visible !== false)
+    .map(([name, config]) => {
+      const featured = config.featured ?? false;
+
+      // ponytail: collabs are assumed private (no GitHub link, no dates); add a url field when one is public
+      return {
+        name,
+        slug: `${config.owner}/${name}`,
+        description: config.description ?? "No description yet.",
+        language: null,
+        technologies: config.technologies ?? [],
+        stars: 0,
+        forks: 0,
+        topics: [],
+        updatedAt: null,
+        htmlUrl: null,
+        homepage: null,
+        demoUrl: config.demoUrl ?? null,
+        featured,
+        private: true,
+        span: resolveSpan(featured, config.span),
+        collab: { owner: config.owner, role: config.role },
+        inProgress: config.inProgress ?? false,
+      } satisfies Project;
+    });
+}
+
 export async function getProjects(): Promise<Project[]> {
   const repos = await fetchGitHubRepos(portfolioConfig.githubUsername);
 
   const projects = repos
-    .map((repo) => {
+    .map((repo): Project | null => {
       const config = getRepoConfig(repo.name);
       const visible = config?.visible ?? portfolioConfig.defaults.visible;
 
@@ -46,9 +84,11 @@ export async function getProjects(): Promise<Project[]> {
     })
     .filter((project): project is Project => project !== null);
 
-  return projects.sort((a, b) => {
+  return [...projects, ...getCollabProjects()].sort((a, b) => {
     if (a.featured !== b.featured) return a.featured ? -1 : 1;
-    return new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime();
+    return (
+      new Date(b.updatedAt ?? 0).getTime() - new Date(a.updatedAt ?? 0).getTime()
+    );
   });
 }
 
@@ -58,7 +98,7 @@ export function getPortfolioStats(projects: Project[]): PortfolioStats {
   ] as string[];
 
   const totalStars = projects.reduce((sum, project) => sum + project.stars, 0);
-  const lastActivity = projects[0]?.updatedAt ?? null;
+  const lastActivity = projects.find((project) => project.updatedAt)?.updatedAt ?? null;
 
   return {
     repoCount: projects.length,

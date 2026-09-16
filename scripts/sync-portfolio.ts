@@ -114,13 +114,14 @@ async function main() {
     const tags = [
       project.featured ? "featured" : null,
       project.private ? "private" : null,
-      configured.has(project.name) ? null : "auto (not in config)",
+      project.collab ? `collab with ${project.collab.owner}` : null,
+      configured.has(project.name) || project.collab ? null : "auto (not in config)",
     ]
       .filter(Boolean)
       .join(", ");
 
     console.log(`  • ${project.name}${tags ? ` [${tags}]` : ""}`);
-    console.log(`    ${project.language ?? "—"} · updated ${project.updatedAt.slice(0, 10)}`);
+    console.log(`    ${project.language ?? "—"} · updated ${project.updatedAt?.slice(0, 10) ?? "—"}`);
   }
 
   const repoNames = new Set(repos.map((repo) => repo.name));

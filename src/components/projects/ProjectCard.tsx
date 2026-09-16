@@ -37,6 +37,10 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             {project.name}
           </h3>
           <div className="flex flex-wrap justify-end gap-2">
+            {project.collab ? <Badge color="#A78BFA">Collab</Badge> : null}
+            {project.inProgress ? (
+              <Badge color="#56B6C2">In progress</Badge>
+            ) : null}
             {project.private ? <Badge color="#9C9288">Private</Badge> : null}
             {project.featured ? (
               <Badge color="#F59E0B">Featured</Badge>
@@ -47,6 +51,15 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         <p className="mt-3 flex-1 text-base leading-relaxed text-text-muted">
           {project.description}
         </p>
+
+        {project.collab ? (
+          <p className="mt-3 text-sm leading-relaxed text-text-muted">
+            <span className="font-semibold text-text-primary">
+              With {project.collab.owner}.
+            </span>{" "}
+            My role: {project.collab.role}.
+          </p>
+        ) : null}
 
         <div className="mt-6 flex flex-wrap items-center gap-2">
           {project.language ? (
@@ -66,9 +79,11 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
               </Badge>
             );
           })}
-          <span className="font-mono text-xs text-text-muted">
-            Updated {formatDate(project.updatedAt)}
-          </span>
+          {project.updatedAt ? (
+            <span className="font-mono text-xs text-text-muted">
+              Updated {formatDate(project.updatedAt)}
+            </span>
+          ) : null}
         </div>
 
         {project.topics.length > 0 ? (
@@ -84,30 +99,34 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           </div>
         ) : null}
 
-        <div className="mt-6 flex flex-wrap gap-3">
-          <a
-            href={project.htmlUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-link text-sm font-semibold text-ember transition hover:text-flame focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ember"
-          >
-            View on GitHub
-            <span className="sr-only">: {project.name}</span> →
-            <span className="sr-only"> (opens in new tab)</span>
-          </a>
-          {project.demoUrl ? (
-            <a
-              href={project.demoUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-link text-sm font-semibold text-text-muted transition hover:text-text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ember"
-            >
-              Live demo
-              <span className="sr-only">: {project.name}</span> →
-              <span className="sr-only"> (opens in new tab)</span>
-            </a>
-          ) : null}
-        </div>
+        {project.htmlUrl || project.demoUrl ? (
+          <div className="mt-6 flex flex-wrap gap-3">
+            {project.htmlUrl ? (
+              <a
+                href={project.htmlUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-link text-sm font-semibold text-ember transition hover:text-flame focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ember"
+              >
+                View on GitHub
+                <span className="sr-only">: {project.name}</span> →
+                <span className="sr-only"> (opens in new tab)</span>
+              </a>
+            ) : null}
+            {project.demoUrl ? (
+              <a
+                href={project.demoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-link text-sm font-semibold text-text-muted transition hover:text-text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ember"
+              >
+                Live demo
+                <span className="sr-only">: {project.name}</span> →
+                <span className="sr-only"> (opens in new tab)</span>
+              </a>
+            ) : null}
+          </div>
+        ) : null}
       </div>
     </motion.article>
   );
