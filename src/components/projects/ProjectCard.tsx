@@ -34,7 +34,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
       <div className="forge-glow flex h-full flex-col rounded-2xl border border-white/10 bg-bg-surface p-6 transition duration-300 group-hover:-translate-y-1 group-hover:border-ember/40">
         <div className="flex items-start justify-between gap-4">
           <h3 className="font-display text-2xl font-bold text-text-primary">
-            {project.name}
+            {project.title}
           </h3>
           <div className="flex flex-wrap justify-end gap-2">
             {project.collab ? <Badge color="#A78BFA">Collab</Badge> : null}
@@ -62,7 +62,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                 rel="noopener noreferrer"
                 className="text-link text-ember hover:text-flame focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ember"
               >
-                {project.collab.owner}
+                {project.collab.ownerName}
                 <span className="sr-only"> on GitHub (opens in new tab)</span>
               </a>
               .
@@ -119,7 +119,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                 className="text-link text-sm font-semibold text-ember transition hover:text-flame focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ember"
               >
                 View on GitHub
-                <span className="sr-only">: {project.name}</span> →
+                <span className="sr-only">: {project.title}</span> →
                 <span className="sr-only"> (opens in new tab)</span>
               </a>
             ) : null}
@@ -131,7 +131,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                 className="text-link text-sm font-semibold text-text-muted transition hover:text-text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ember"
               >
                 Live demo
-                <span className="sr-only">: {project.name}</span> →
+                <span className="sr-only">: {project.title}</span> →
                 <span className="sr-only"> (opens in new tab)</span>
               </a>
             ) : null}

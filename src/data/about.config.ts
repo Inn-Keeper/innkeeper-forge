@@ -1,11 +1,14 @@
 import { portfolioConfig } from "@/data/repos.config";
 
+const experienceYears = 15;
+
 export const aboutConfig = {
   name: "Dalton Moraes de Castro",
   shortName: "Dalton Castro",
   role: "Software Engineer",
   location: "Stockholm, Sweden",
-  headline: "Product-minded engineer, 15 years shipping web and mobile software.",
+  experienceYears,
+  headline: `Product-minded engineer, ${experienceYears} years shipping web and mobile software.`,
   bio: [
     "Hi there! I'm a software engineer who likes staying close to the product: understanding the problem, building the interface, wiring up the APIs, and seeing how everything behaves once it's live.",
     "Most of my work lives in the React and TypeScript world, building web experiences and React Native mobile apps, from complex UI state to telemetry, release workflows, and the small details that make software feel clear to use. I've shipped software in healthcare with Philips Tasy EMR, regulated iGaming, and enterprise tooling, including extensions for Azure DevOps.",

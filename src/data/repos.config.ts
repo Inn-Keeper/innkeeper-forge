@@ -8,6 +8,7 @@ export const portfolioConfig = {
   repos: {
     "ativscrum": {
       visible: true,
+      title: "ativScrum",
       span: "medium",
       demoUrl: "https://ativscrum.vercel.app",
       technologies: ["React 19", "Motion", "dnd-kit", "Tailwind CSS 4"],
@@ -16,13 +17,15 @@ export const portfolioConfig = {
     },
     "tech-refresh": {
       visible: true,
+      title: "Grip",
       featured: true,
       technologies: ["Expo", "React Native", "Vite", "TanStack", "Supabase"],
       description:
-        "Grip hiring pipeline tooling with funnel analytics, velocity tracking, and Supabase auth.",
+        "Interview prep and hiring pipeline manager. Web and React Native apps share one Supabase Postgres, with funnel analytics, stage velocity, and follow-up tracking.",
     },
     "intygy": {
       visible: true,
+      title: "Intygy",
       featured: true,
       span: "large",
       technologies: ["Playwright", "axe-core", "Hono"],
@@ -31,7 +34,7 @@ export const portfolioConfig = {
     },
     "psycho-api": {
       visible: true,
-      featured: true,
+      title: "PsychoAI API",
       span: "medium",
       technologies: ["FastAPI", "SQLAlchemy", "PostgreSQL", "Anthropic API"],
       description:
@@ -39,7 +42,7 @@ export const portfolioConfig = {
     },
     "dev-panel": {
       visible: true,
-      featured: true,
+      title: "Dev Panel",
       span: "large",
       technologies: ["Ratatui", "Crossterm"],
       description:
@@ -47,7 +50,7 @@ export const portfolioConfig = {
     },
     "grip-pipeline-service": {
       visible: true,
-      featured: true,
+      title: "Grip Pipeline Service",
       span: "large",
       technologies: ["Spring Boot", "Spring Data JPA", "PostgreSQL"],
       description:
@@ -55,6 +58,7 @@ export const portfolioConfig = {
     },
     "midiremapper": {
       visible: true,
+      title: "MIDI Remapper",
       span: "medium",
       technologies: ["JUCE", "CMake", "Catch2"],
       description:
@@ -62,6 +66,7 @@ export const portfolioConfig = {
     },
     "stretchy": {
       visible: true,
+      title: "Stretchy",
       span: "medium",
       featured: true,
       technologies: ["Expo", "React Native", "Skia", "Supabase"],
@@ -70,6 +75,7 @@ export const portfolioConfig = {
     },
     "psycho-ui": {
       visible: true,
+      title: "PsychoAI UI",
       span: "medium",
       technologies: ["React", "Vite", "TanStack Query"],
       description:
@@ -77,13 +83,14 @@ export const portfolioConfig = {
     },
 
     "next-playground": {
-      visible: true,
+      visible: false,
       span: "medium",
       technologies: ["Next.js", "NextAuth.js", "Redux Toolkit"],
       description: "Booking system experiment built with Next.js.",
     },
     "kotlin-study": {
       visible: true,
+      title: "Kotlin Study",
       span: "medium",
       technologies: ["Kotlin", "Gradle", "Ktor", "kotlinx.serialization"],
       description:
@@ -95,7 +102,7 @@ export const portfolioConfig = {
       description: "Next.js web frontend experiment.",
     },
     "aurelia-playground": {
-      visible: true,
+      visible: false,
       span: "medium",
       technologies: ["Aurelia 2", "Vite"],
       description:
@@ -103,6 +110,7 @@ export const portfolioConfig = {
     },
     "ignited-website": {
       visible: true,
+      title: "Ignited Website",
       span: "medium",
       technologies: ["React", "Vite", "GSAP"],
       description:
@@ -110,13 +118,17 @@ export const portfolioConfig = {
     },
     "linkcheck": {
       visible: true,
-      description: "Simple link checker implemented in Go.",
+      title: "linkcheck",
+      description:
+        "Concurrent broken-link checker CLI. Crawls same-host pages and reports every failing link, with worker pools, graceful cancellation, retries, and per-host rate limiting.",
     },
     "portrait-web": {
       visible: true,
+      title: "Portrait",
       span: "medium",
       technologies: ["Astro", "React", "Supabase"],
-      description: "Web frontend for the Portrait project.",
+      description:
+        "Web frontend for Cult of Grain, a curated photography portfolio of landscape, portrait, and editorial work.",
     },
     "portrait-admin": {
       visible: false,
@@ -130,6 +142,7 @@ export const portfolioConfig = {
     },
     "snow-brawl": {
       visible: true,
+      title: "Snow Brawl",
       span: "medium",
       technologies: ["SFML", "Box2D", "EnTT"],
       description: "C++ game experiment with a snow-themed brawl prototype.",
@@ -137,14 +150,16 @@ export const portfolioConfig = {
 
     "lambari": {
       visible: true,
+      title: "Lambari",
       featured: true,
       span: "large",
       technologies: ["Kafka", "React", "Server-Sent Events"],
       description:
-        "Inspired on a tiny Brazilian fish, named after an Old Tupi word. Real-time fraud scoring pipeline. A Go worker-pool engine scores payment transactions against velocity, geo, amount, and merchant-risk rules, streaming verdicts to a live dashboard.",
+        "Real-time fraud scoring pipeline. A Go worker-pool engine scores payment transactions against velocity, geo, amount, and merchant-risk rules, fed over HTTP or Kafka, and streams verdicts to a live React dashboard. Named after a tiny Brazilian fish.",
     },
     "grip-ai-api": {
       visible: true,
+      title: "Grip AI API",
       span: "medium",
       technologies: ["FastAPI", "Pydantic", "Gemini", "Supabase"],
       description:
@@ -152,12 +167,15 @@ export const portfolioConfig = {
     },
     "ativscrum-ai-api": {
       visible: true,
+      title: "ativScrum AI API",
       span: "medium",
-      technologies: ["FastAPI", "Pydantic", "httpx"],
-      description: "Portfolio-grade FastAPI AI service for ativScrum.",
+      technologies: ["FastAPI", "Pydantic", "Gemini", "Supabase"],
+      description:
+        "Stateless AI service for ativScrum team boards. Validates Supabase sessions, reads only through row-level security, enforces a daily quota, and returns strictly validated Gemini suggestions without storing prompts.",
     },
     "fretboard-chaos": {
       visible: true,
+      title: "Fretboard Chaos",
       span: "medium",
       technologies: ["React", "Vite", "Tailwind CSS 4", "Web Audio API"],
       description:
@@ -172,6 +190,7 @@ export const portfolioConfig = {
     },
     "innkeeper-forge": {
       visible: true,
+      title: "Innkeeper Forge",
       span: "medium",
       technologies: ["Next.js 16", "React 19", "Motion", "React Three Fiber"],
       description:
@@ -194,16 +213,25 @@ export const portfolioConfig = {
     },
     "matematica": {
       visible: true,
+      title: "Matemática",
       technologies: ["Expo", "React Native", "Vite", "Supabase"],
+      description:
+        "Month-to-month personal finance app for web and mobile, built to replace an old Excel sheet.",
     },
     "matematica-ai-api": {
       visible: true,
+      title: "Matemática AI API",
+      technologies: ["FastAPI", "Gemini", "Supabase"],
+      description:
+        "Insights chat service for Matemática. FastAPI on Gemini, authenticated with the caller's Supabase token so row-level security applies and no service key is needed.",
     },
   } satisfies Record<string, RepoConfig>,
   // Repos owned by someone else, listed by hand (not fetched from GitHub).
   collaborations: {
     "speedz-tail": {
+      title: "SpeedzTail",
       owner: "joelpiccoli",
+      ownerName: "Joel Piccoli",
       role: "UI/UX, game experience, and soundtrack (full composition and arrangements)",
       inProgress: true,
       span: "medium",

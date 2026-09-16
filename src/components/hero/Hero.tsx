@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
+import { aboutConfig } from "@/data/about.config";
 import { portfolioConfig } from "@/data/repos.config";
 import { usePrefersReducedMotion } from "@/lib/motion";
 import { Button } from "@/components/ui/Button";
@@ -33,7 +34,7 @@ export function Hero() {
               })}
           className="font-mono text-xs font-semibold uppercase tracking-[0.25em] text-ember"
         >
-          Portfolio · Workshop
+          {aboutConfig.shortName} · {aboutConfig.role}
         </motion.p>
         <motion.h1
           {...fadeUp(0.1)}
@@ -45,8 +46,9 @@ export function Hero() {
           {...fadeUp(0.2)}
           className="mt-6 max-w-xl text-lg text-text-muted sm:text-xl"
         >
-          Web and mobile apps forged in React, React Native, and TypeScript.
-          Projects and experiments from the workshop, synced from GitHub.
+          Product-minded engineer building web and mobile apps with React,
+          React Native, and TypeScript. These are projects and experiments from
+          my workshop.
         </motion.p>
         <motion.div
           {...fadeUp(0.3)}

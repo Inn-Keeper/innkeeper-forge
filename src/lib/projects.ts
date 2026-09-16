@@ -33,6 +33,7 @@ function getCollabProjects(): Project[] {
       // ponytail: collabs are assumed private (no GitHub link, no dates); add a url field when one is public
       return {
         name,
+        title: config.title ?? name,
         slug: `${config.owner}/${name}`,
         description: config.description ?? "No description yet.",
         language: null,
@@ -47,7 +48,11 @@ function getCollabProjects(): Project[] {
         featured,
         private: true,
         span: resolveSpan(featured, config.span),
-        collab: { owner: config.owner, role: config.role },
+        collab: {
+          owner: config.owner,
+          ownerName: config.ownerName ?? config.owner,
+          role: config.role,
+        },
         inProgress: config.inProgress ?? false,
       } satisfies Project;
     });
@@ -69,6 +74,7 @@ export async function getProjects(): Promise<Project[]> {
 
       return {
         name: repo.name,
+        title: config?.title ?? repo.name,
         slug: repo.name,
         description,
         language: repo.language,
@@ -77,7 +83,8 @@ export async function getProjects(): Promise<Project[]> {
         forks: repo.forks_count,
         topics: repo.topics,
         updatedAt: repo.updated_at,
-        htmlUrl: repo.html_url,
+        // Private repos 404 for visitors, so they get no GitHub link.
+        htmlUrl: repo.private ? null : repo.html_url,
         homepage: repo.homepage,
         demoUrl: config?.demoUrl ?? repo.homepage ?? null,
         featured,
@@ -104,12 +111,10 @@ export function getPortfolioStats(projects: Project[]): PortfolioStats {
   );
 
   const totalStars = projects.reduce((sum, project) => sum + project.stars, 0);
-  const lastActivity = projects.find((project) => project.updatedAt)?.updatedAt ?? null;
 
   return {
     repoCount: projects.length,
     techs: [...frameworks, ...languages],
     totalStars,
-    lastActivity,
   };
 }

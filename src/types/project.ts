@@ -2,6 +2,7 @@ export type ProjectSpan = "large" | "medium" | "small";
 
 export interface RepoConfig {
   visible?: boolean;
+  title?: string;
   featured?: boolean;
   span?: ProjectSpan;
   description?: string;
@@ -11,12 +12,14 @@ export interface RepoConfig {
 
 export interface CollabConfig extends RepoConfig {
   owner: string;
+  ownerName?: string;
   role: string;
   inProgress?: boolean;
 }
 
 export interface Project {
   name: string;
+  title: string;
   slug: string;
   description: string;
   language: string | null;
@@ -31,7 +34,7 @@ export interface Project {
   featured: boolean;
   private: boolean;
   span: ProjectSpan;
-  collab?: { owner: string; role: string };
+  collab?: { owner: string; ownerName: string; role: string };
   inProgress?: boolean;
 }
 
@@ -39,5 +42,4 @@ export interface PortfolioStats {
   repoCount: number;
   techs: string[];
   totalStars: number;
-  lastActivity: string | null;
 }

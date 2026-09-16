@@ -1,27 +1,19 @@
+import { aboutConfig } from "@/data/about.config";
 import type { PortfolioStats } from "@/types/project";
 
 interface StatsStripProps {
   stats: PortfolioStats;
 }
 
-function formatDate(iso: string | null) {
-  if (!iso) return "—";
-  return new Intl.DateTimeFormat("en", {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-  }).format(new Date(iso));
-}
-
 export function StatsStrip({ stats }: StatsStripProps) {
   const items = [
-    { label: "Projects", value: String(stats.repoCount) },
+    { label: "Experience", value: `${aboutConfig.experienceYears} years` },
     {
       label: "Techs",
       value: stats.techs.join(", ") || "—",
       className: "lg:col-span-2",
     },
-    { label: "Last activity", value: formatDate(stats.lastActivity) },
+    { label: "Projects", value: String(stats.repoCount) },
   ];
 
   return (
