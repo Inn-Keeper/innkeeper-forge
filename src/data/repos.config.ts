@@ -207,8 +207,8 @@ export const portfolioConfig = {
       role: "UI/UX, game experience, and soundtrack (full composition and arrangements)",
       inProgress: true,
       span: "medium",
-      technologies: ["Pro Tools"],
-      description: "Collaborative game project, currently in development.",
+      technologies: ["React Native", "Pro Tools"],
+      description: "Infinite 2D car racing game.",
     },
   } satisfies Record<string, CollabConfig>,
 };

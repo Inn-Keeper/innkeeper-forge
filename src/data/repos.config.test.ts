@@ -18,6 +18,7 @@ test("speedz-tail is listed as an in-progress collab", () => {
   const collab = portfolioConfig.collaborations["speedz-tail"];
   assert.equal(collab.owner, "joelpiccoli");
   assert.equal(collab.inProgress, true);
+  assert.ok(collab.technologies.includes("React Native"));
 });
 
 test("kotlin-study is included in the synced portfolio", () => {

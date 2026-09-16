@@ -55,7 +55,17 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         {project.collab ? (
           <p className="mt-3 text-sm leading-relaxed text-text-muted">
             <span className="font-semibold text-text-primary">
-              With {project.collab.owner}.
+              With{" "}
+              <a
+                href={`https://github.com/${project.collab.owner}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-link text-ember hover:text-flame focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ember"
+              >
+                {project.collab.owner}
+                <span className="sr-only"> on GitHub (opens in new tab)</span>
+              </a>
+              .
             </span>{" "}
             My role: {project.collab.role}.
           </p>
