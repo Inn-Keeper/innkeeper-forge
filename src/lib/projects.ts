@@ -8,6 +8,9 @@ import type {
   RepoConfig,
 } from "@/types/project";
 
+// Frameworks listed ahead of GitHub languages in the stats strip.
+const statsFrameworks = ["React", "React Native"];
+
 function resolveSpan(featured: boolean, configured?: ProjectSpan): ProjectSpan {
   if (configured) return configured;
   if (featured) return "large";
@@ -96,13 +99,16 @@ export function getPortfolioStats(projects: Project[]): PortfolioStats {
   const languages = [
     ...new Set(projects.map((project) => project.language).filter(Boolean)),
   ] as string[];
+  const frameworks = statsFrameworks.filter((framework) =>
+    projects.some((project) => project.technologies.includes(framework)),
+  );
 
   const totalStars = projects.reduce((sum, project) => sum + project.stars, 0);
   const lastActivity = projects.find((project) => project.updatedAt)?.updatedAt ?? null;
 
   return {
     repoCount: projects.length,
-    languages,
+    techs: [...frameworks, ...languages],
     totalStars,
     lastActivity,
   };

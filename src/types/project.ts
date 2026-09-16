@@ -37,7 +37,7 @@ export interface Project {
 
 export interface PortfolioStats {
   repoCount: number;
-  languages: string[];
+  techs: string[];
   totalStars: number;
   lastActivity: string | null;
 }

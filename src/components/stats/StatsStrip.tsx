@@ -16,7 +16,11 @@ function formatDate(iso: string | null) {
 export function StatsStrip({ stats }: StatsStripProps) {
   const items = [
     { label: "Projects", value: String(stats.repoCount) },
-    { label: "Languages", value: stats.languages.join(", ") || "—" },
+    {
+      label: "Techs",
+      value: stats.techs.join(", ") || "—",
+      className: "lg:col-span-2",
+    },
     { label: "Last activity", value: formatDate(stats.lastActivity) },
   ];
 
@@ -29,7 +33,7 @@ export function StatsStrip({ stats }: StatsStripProps) {
         {items.map((item) => (
           <div
             key={item.label}
-            className="rounded-2xl border border-white/10 bg-bg-surface/80 p-5 backdrop-blur-sm"
+            className={`rounded-2xl border border-white/10 bg-bg-surface/80 p-5 backdrop-blur-sm ${item.className ?? ""}`}
           >
             <dt className="font-mono text-[11px] uppercase tracking-[0.18em] text-text-muted">
               {item.label}
