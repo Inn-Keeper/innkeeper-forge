@@ -15,7 +15,7 @@ export const portfolioConfig = {
       description:
         "A 2013 university Scrum tool, reborn as an animated 2026 single-page app.",
     },
-    "tech-refresh": {
+    "grip-apps": {
       visible: true,
       title: "Grip",
       featured: true,
