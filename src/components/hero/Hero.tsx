@@ -1,67 +1,29 @@
-"use client";
-
-import { motion } from "motion/react";
 import { aboutConfig } from "@/data/about.config";
-import { portfolioConfig } from "@/data/repos.config";
-import { usePrefersReducedMotion } from "@/lib/motion";
 import { Button } from "@/components/ui/Button";
-import { EmberField } from "./EmberField";
+import { ForgeBackdrop } from "./ForgeBackdrop";
 
 export function Hero() {
-  const reducedMotion = usePrefersReducedMotion();
-  const githubUrl = `https://github.com/${portfolioConfig.githubUsername}`;
-
-  const fadeUp = (delay = 0) =>
-    reducedMotion
-      ? {}
-      : {
-          initial: { opacity: 0, y: 20 },
-          animate: { opacity: 1, y: 0 },
-          transition: { duration: 0.6, delay },
-        };
-
   return (
-    <section className="forge-light-cycle relative overflow-hidden px-6 pb-32 pt-28 sm:pb-40 sm:pt-32">
-      <EmberField />
-      <div className="relative z-10 mx-auto max-w-6xl">
-        <motion.p
-          {...(reducedMotion
-            ? {}
-            : {
-                initial: { opacity: 0, y: 12 },
-                animate: { opacity: 1, y: 0 },
-                transition: { duration: 0.5 },
-              })}
-          className="font-mono text-xs font-semibold uppercase tracking-[0.25em] text-ember"
-        >
-          {aboutConfig.shortName} · {aboutConfig.role}
-        </motion.p>
-        <motion.h1
-          {...fadeUp(0.1)}
-          className="font-display mt-4 max-w-3xl text-5xl font-extrabold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl"
-        >
-          <span className="gradient-text forge-lit-text">Innkeeper Forge</span>
-        </motion.h1>
-        <motion.p
-          {...fadeUp(0.2)}
-          className="mt-6 max-w-xl text-lg text-text-muted sm:text-xl"
-        >
-          Product-minded engineer building web and mobile apps with React,
-          React Native, and TypeScript. These are projects and experiments from
-          my workshop.
-        </motion.p>
-        <motion.div
-          {...fadeUp(0.3)}
-          className="mt-10 flex flex-wrap gap-4"
-        >
-          <Button href="#projects">View projects</Button>
-          <Button href="#about" variant="ghost">
-            About
-          </Button>
-          <Button href={githubUrl} variant="ghost" external>
-            GitHub profile
-          </Button>
-        </motion.div>
+    <section className="relative overflow-hidden px-6 pb-12 sm:pb-16">
+      <nav aria-label="Main navigation" className="mx-auto flex max-w-6xl items-center justify-between gap-4 border-b border-white/10 py-6">
+        <a href="#" aria-label="Innkeeper Forge home" className="font-display text-sm font-bold tracking-tight focus-visible:outline-2 focus-visible:outline-ember">IF<span className="text-ember">.</span></a>
+        <div className="flex items-center gap-5 text-sm text-text-muted sm:gap-8">
+          <a href="#projects" className="text-link hover:text-text-primary">Work</a>
+          <a href="#about" className="text-link hover:text-text-primary">About</a>
+          <a href={aboutConfig.links.email} className="text-link text-ember">Let’s talk <span aria-hidden="true">↗</span></a>
+        </div>
+      </nav>
+      <div className="mx-auto grid max-w-6xl items-center gap-6 pt-14 sm:pt-20 lg:grid-cols-[1fr_1.05fr] lg:gap-4 lg:pt-16">
+        <div className="relative z-10 min-w-0">
+          <p className="font-mono text-xs uppercase tracking-[.18em] text-ember">{aboutConfig.shortName} <span className="text-text-muted">/ {aboutConfig.location}</span></p>
+          <h1 className="font-display mt-5 text-[clamp(2rem,8vw,4.5rem)] font-extrabold leading-[1.02] tracking-tight">Innkeeper<br /><span className="gradient-text">Forge.</span></h1>
+          <p className="mt-4 max-w-md text-base leading-relaxed text-text-muted">I’m Dalton, a product-minded engineer forging ideas for quite some time. I decided to showcase a few personal experiments and projects because I feel like doing it. Well, take a look! Feedback always appreciated.</p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Button href="#projects">Explore my work <span aria-hidden="true" className="ml-2">↓</span></Button>
+            <Button href={aboutConfig.links.email} variant="ghost">Get in touch</Button>
+          </div>
+        </div>
+        <ForgeBackdrop />
       </div>
     </section>
   );

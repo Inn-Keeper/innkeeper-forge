@@ -1,7 +1,8 @@
 import { ImageResponse } from "next/og";
+import { aboutConfig } from "@/data/about.config";
+import { portfolioConfig } from "@/data/repos.config";
 
-export const alt =
-  "Innkeeper Forge, Dalton Castro's web and mobile software portfolio";
+export const alt = `${aboutConfig.shortName}, ${aboutConfig.role}. Innkeeper Forge portfolio.`;
 
 export const size = {
   width: 1200,
@@ -85,7 +86,7 @@ export default function OpenGraphImage() {
             textTransform: "uppercase",
           }}
         >
-          Portfolio / Workshop
+          {`${aboutConfig.shortName} · ${aboutConfig.role}`}
         </div>
         <div
           style={{
@@ -109,7 +110,8 @@ export default function OpenGraphImage() {
             lineHeight: 1.35,
           }}
         >
-          Web and mobile projects forged in code and curated by Dalton Castro.
+          Product-minded engineer building web and mobile apps with React,
+          React Native, and TypeScript.
         </div>
         <div
           style={{
@@ -131,7 +133,7 @@ export default function OpenGraphImage() {
               background: "#f59e0b",
             }}
           />
-          Inn-Keeper
+          {`github.com/${portfolioConfig.githubUsername}`}
         </div>
       </div>
     </div>,

@@ -1,38 +1,18 @@
 import { aboutConfig } from "@/data/about.config";
 import type { PortfolioStats } from "@/types/project";
 
-interface StatsStripProps {
-  stats: PortfolioStats;
-}
-
-export function StatsStrip({ stats }: StatsStripProps) {
-  const items = [
-    { label: "Experience", value: `${aboutConfig.experienceYears} years` },
-    {
-      label: "Techs",
-      value: stats.techs.join(", ") || "—",
-      className: "lg:col-span-2",
-    },
-    { label: "Projects", value: String(stats.repoCount) },
-  ];
-
+export function StatsStrip({ stats }: { stats: PortfolioStats }) {
   return (
-    <section className="px-6 pb-16" aria-labelledby="stats-heading">
-      <h2 id="stats-heading" className="sr-only">
-        Portfolio stats
-      </h2>
-      <dl className="mx-auto grid max-w-6xl gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {items.map((item) => (
-          <div
-            key={item.label}
-            className={`rounded-2xl border border-white/10 bg-bg-surface/80 p-5 backdrop-blur-sm ${item.className ?? ""}`}
-          >
-            <dt className="font-mono text-[11px] uppercase tracking-[0.18em] text-text-muted">
-              {item.label}
-            </dt>
-            <dd className="mt-2 font-display text-2xl font-bold text-text-primary">
-              {item.value}
-            </dd>
+    <section className="px-6" aria-label="At a glance">
+      <dl className="mx-auto grid max-w-6xl gap-6 border-y border-white/10 py-7 sm:grid-cols-3">
+        {[
+          ["Experience", `${aboutConfig.experienceYears} years shipping software`],
+          ["Focus", "React · React Native · TypeScript"],
+          ["The workshop", `${stats.repoCount} projects & experiments`],
+        ].map(([label, value]) => (
+          <div key={label}>
+            <dt className="font-mono text-[10px] uppercase tracking-[.18em] text-text-muted">{label}</dt>
+            <dd className="mt-2 text-sm font-medium text-text-primary">{value}</dd>
           </div>
         ))}
       </dl>

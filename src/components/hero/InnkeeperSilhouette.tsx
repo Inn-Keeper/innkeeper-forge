@@ -1,114 +1,39 @@
-import type { ComponentProps } from "react";
-
-type InnkeeperSilhouetteProps = ComponentProps<"svg"> & {
-  flipped?: boolean;
-};
-
-export function InnkeeperSilhouette({
-  className = "",
-  flipped = false,
-  ...svgProps
-}: InnkeeperSilhouetteProps) {
+/** Shares the scene coordinate system so the hammer meets the workpiece. */
+// Joint pivots must match globals.css: shoulder 174,246 · elbow 222,258 · wrist 267,255.
+export function InnkeeperSilhouette() {
   return (
-    <svg
-      className={className}
-      viewBox="0 0 184 260"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      {...svgProps}
-      aria-hidden
-    >
-      <defs>
-        <linearGradient id="innkeeperRim" x1="0" y1="130" x2="160" y2="130" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="#2A2420" />
-          <stop offset="55%" stopColor="#1A1512" />
-          <stop offset="100%" stopColor="#F59E0B" stopOpacity="0.85" />
-        </linearGradient>
-        <linearGradient id="apronRim" x1="40" y1="160" x2="130" y2="160" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="#241F1B" />
-          <stop offset="100%" stopColor="#EA580C" stopOpacity="0.35" />
-        </linearGradient>
-      </defs>
-
-      <g transform={flipped ? "translate(160 0) scale(-1 1)" : undefined}>
-        {/* Shadow on ground */}
-        <ellipse cx="78" cy="252" rx="42" ry="6" fill="#000" opacity="0.35" />
-
-        <g className="forge-innkeeper-idle">
-          {/* Boots */}
-          <path d="M52 228 L52 248 L68 248 L68 232 Z" fill="#141110" />
-          <path d="M88 228 L88 248 L104 248 L104 232 Z" fill="#141110" />
-
-          {/* Legs */}
-          <path d="M58 188 L58 230 L70 230 L70 188 Z" fill="#1E1B18" />
-          <path d="M86 188 L86 230 L98 230 L98 188 Z" fill="#1E1B18" />
-
-          {/* Apron */}
-          <path
-            d="M48 132 L44 248 L112 248 L108 132 L92 128 L68 128 Z"
-            fill="url(#apronRim)"
-            stroke="#3D3530"
-            strokeWidth="1.2"
-          />
-          <path d="M68 128 L92 128 L88 248 L72 248 Z" fill="#161412" opacity="0.6" />
-
-          {/* Torso / tunic */}
-          <path
-            d="M52 92 Q78 84 104 92 L108 136 L48 136 Z"
-            fill="#1A1512"
-            stroke="url(#innkeeperRim)"
-            strokeWidth="1.5"
-          />
-
-          {/* Left arm (away from fire) */}
-          <path
-            d="M48 98 Q28 108 24 132 Q22 142 30 146 Q38 148 42 136 Q46 120 52 108 Z"
-            fill="#1A1512"
-            stroke="#3D3530"
-            strokeWidth="1.2"
-          />
-
-          {/* Right arm + tongs toward forge */}
-          <path
-            d="M104 98 Q128 108 132 128 Q136 142 126 148 Q116 152 110 136 Q106 118 104 108 Z"
-            fill="#1A1512"
-            stroke="url(#innkeeperRim)"
-            strokeWidth="1.5"
-          />
-          <g stroke="#4A4038" strokeWidth="2" strokeLinecap="round">
-            <line x1="128" y1="136" x2="146" y2="122" />
-            <line x1="128" y1="136" x2="146" y2="138" />
-            <circle cx="149" cy="130" r="5" fill="#F59E0B" stroke="#FBBF24" strokeWidth="1" opacity="0.9" />
+    <g strokeLinecap="round" strokeLinejoin="round">
+      {/* Planted boots, knees softly bent, a leather apron anchoring the figure. */}
+      <path d="M176 328 Q168 356 170 372 Q166 386 152 394 Q148 401 158 401 L190 401 Q194 396 190 388 Q186 368 196 344 Z" fill="#171719" stroke="#45403a" strokeWidth="2" />
+      <path d="M200 334 Q212 352 214 372 Q216 388 222 394 Q240 396 250 401 L212 401 Q204 396 204 386 Q200 364 192 346 Z" fill="#171719" stroke="#45403a" strokeWidth="2" />
+      <path d="M194 219 Q203 214 212 216 Q214 228 211 238 L195 238 Q192 228 194 219 Z" fill="#93674b" />
+      <path d="M176 229 Q199 218 220 234 Q230 262 233 300 Q234 322 230 336 Q204 350 166 336 Q162 300 166 268 Q168 244 176 229 Z" fill="#29272a" stroke="#5a4b3e" strokeWidth="2" />
+      <path d="M186 240 Q200 238 212 243 Q220 290 224 342 Q194 352 165 339 Q170 300 178 272 Q181 254 186 240 Z" fill="#69412c" />
+      <path d="M191 248 Q186 290 183 328 M176 286 Q197 282 218 289" fill="none" stroke="#b17845" strokeWidth="2" opacity=".55" />
+      {/* Profile faces the work: brow, nose, beard. */}
+      <path d="M183 194 Q180 170 200 168 Q219 168 222 186 Q223 192 229 199 Q226 203 221 203 Q220 210 216 216 L201 225 Q188 216 184 206 Z" fill="#ab7b55" />
+      <path d="M175 238 Q181 214 178 194 Q174 176 188 165 Q206 154 219 170 Q223 176 222 183 Q208 178 198 182 Q191 198 195 216 Q193 230 188 241 Q181 238 175 238 Z" fill="#29272a" stroke="#574b40" strokeWidth="2" />
+      <path d="M186 186 Q183 208 182 225" fill="none" stroke="#574b40" strokeWidth="2" opacity=".65" />
+      <path d="M195 203 Q205 210 222 205 Q221 216 213 224 Q205 232 197 229 Q190 220 195 203 Z" fill="#38302b" />
+      <path d="M214 187 Q218 189 220 192 M214 199 Q219 200 222 199" fill="none" stroke="#f2b874" strokeWidth="2" />
+      {/* The right hand keeps the tongs on the hot bar. */}
+      <path d="M214 240 Q232 244 234 262 Q236 276 232 288 Q228 294 222 288 Q218 270 214 240 Z" fill="#534039" />
+      <path d="M224 280 Q244 276 260 278 Q264 284 260 290 Q244 292 228 294 Z" fill="#534039" />
+      <ellipse cx="264" cy="285" rx="7" ry="6" fill="#c08b60" />
+      <path d="M264 282 L330 295 M267 289 L330 299" stroke="#93908a" strokeWidth="3" />
+      {/* The left arm rests at the side, then lifts the hammer to strike. */}
+      <g className="forge-hammer">
+        <path d="M168 238 Q196 242 224 250 Q230 258 224 266 Q196 262 172 254 Q164 246 168 238 Z" fill="#393235" />
+        <g className="forge-forearm">
+          <path d="M220 250 Q244 249 262 250 Q266 255 262 260 Q244 262 222 266 Q216 258 220 250 Z" fill="#393235" />
+          <g className="forge-wrist">
+            <path d="M260 251 L351 283" stroke="#ad7950" strokeWidth="6" />
+            <ellipse cx="267" cy="255" rx="8" ry="7" fill="#c08b60" />
+            <rect x="336" y="273" width="30" height="20" rx="3" fill="#767775" stroke="#bab6a6" strokeWidth="2" />
+            <path d="M338 293 H364" stroke="#ffcd87" strokeWidth="2" />
           </g>
-
-          {/* Head */}
-          <circle cx="78" cy="72" r="22" fill="#1A1512" stroke="url(#innkeeperRim)" strokeWidth="1.5" />
-
-          {/* Beard */}
-          <path
-            d="M62 78 Q78 98 94 78 Q88 92 78 94 Q68 92 62 78 Z"
-            fill="#141110"
-            opacity="0.9"
-          />
-
-          {/* Cap / hood */}
-          <path
-            d="M56 62 Q78 42 100 62 L96 72 Q78 58 60 72 Z"
-            fill="#141110"
-            stroke="#3D3530"
-            strokeWidth="1.2"
-          />
-
-          {/* Fire-lit face edge */}
-          <path
-            d="M88 58 Q96 68 94 82"
-            stroke="#F59E0B"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            opacity="0.45"
-          />
         </g>
       </g>
-    </svg>
+    </g>
   );
 }
