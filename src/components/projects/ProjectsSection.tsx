@@ -57,7 +57,7 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
         <div className="mt-3 flex flex-wrap items-end justify-between gap-4">
           <div>
             <h2 className="font-display text-3xl font-bold sm:text-4xl">Selected work</h2>
-            <p className="mt-3 max-w-xl text-text-muted">A few things I’ve built. Open a demo and take a look around.</p>
+            <p className="mt-3 max-w-xl text-text-muted">My personal workshop: three projects, the problems behind them, and the decisions that shaped them.</p>
           </div>
           <a href="#catalogue" onClick={() => { if (catalogueRef.current) catalogueRef.current.open = true; }} className="text-link inline-flex min-h-11 items-center text-sm text-ember">Browse all {projects.length} projects ↓</a>
         </div>

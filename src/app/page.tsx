@@ -1,3 +1,4 @@
+import { ExperienceSection } from "@/components/about/ExperienceSection";
 import { AboutSection } from "@/components/about/AboutSection";
 import { Footer } from "@/components/layout/Footer";
 import { Hero } from "@/components/hero/Hero";
@@ -13,10 +14,11 @@ export default async function Home() {
   const stats = getPortfolioStats(projects);
 
   return (
-    <main>
+    <main id="main-content">
       <Analytics />
       <Hero />
       <StatsStrip stats={stats} />
+      <ExperienceSection />
       <ProjectsSection projects={projects} />
       <AboutSection />
       <Footer />

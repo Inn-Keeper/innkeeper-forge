@@ -17,10 +17,10 @@ test("only the flagship projects are featured", () => {
   const featured = repos.filter(([, config]) => config.featured).map(([slug]) => slug);
   assert.deepEqual(featured.sort(), [
     "assembly-demo",
+    "grip-apps",
     "intygy",
     "lambari",
     "stretchy",
-    "tech-refresh",
   ]);
 });
 

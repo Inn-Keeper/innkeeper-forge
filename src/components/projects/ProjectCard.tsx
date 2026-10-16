@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { projectStories } from "@/data/project-stories";
 import type { Project } from "@/types/project";
 
 interface ProjectCardProps {
@@ -7,6 +8,8 @@ interface ProjectCardProps {
 }
 
 export function ProjectCard({ project, preview }: ProjectCardProps) {
+  const story = preview ? projectStories[project.slug] : undefined;
+
   return (
     <article className="flex h-full min-w-0 flex-col overflow-hidden rounded-2xl border border-white/10 bg-bg-surface transition-colors hover:border-ember/30">
       {preview ? (
@@ -15,6 +18,7 @@ export function ProjectCard({ project, preview }: ProjectCardProps) {
         </div>
       ) : null}
       <div className="flex flex-1 flex-col p-6">
+        {story ? <p className="mb-3 font-mono text-[10px] uppercase tracking-wider text-ember">{story.status}</p> : null}
         <div className="flex flex-wrap items-baseline justify-between gap-2">
           <h3 className="font-display text-2xl font-bold">{project.title}</h3>
           {project.inProgress ? <span className="text-xs text-text-muted">In progress</span> : null}
@@ -22,6 +26,25 @@ export function ProjectCard({ project, preview }: ProjectCardProps) {
         <p className="mt-3 flex-1 text-sm leading-relaxed text-text-muted sm:text-base">{project.description}</p>
         {project.collab ? (
           <p className="mt-3 text-sm leading-relaxed text-text-muted">With <a href={`https://github.com/${project.collab.owner}`} target="_blank" rel="noopener noreferrer" className="text-link text-ember">{project.collab.ownerName}<span className="sr-only"> on GitHub (opens in new tab)</span></a>. My role: {project.collab.role}.</p>
+        ) : null}
+        {story ? (
+          <div className="mt-4">
+            <p className="text-sm leading-relaxed text-text-primary">{story.ownership}</p>
+            <details className="group mt-4 rounded-lg border border-white/10 bg-bg-deep/40 open:bg-bg-deep/60">
+              <summary className="cursor-pointer rounded-lg px-4 py-3 text-sm font-semibold text-ember focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ember">
+                <span className="ml-1">Decisions & outcomes</span>
+                <span className="sr-only"> for {project.title}</span>
+              </summary>
+              <dl className="space-y-4 border-t border-white/10 p-4 text-sm leading-relaxed">
+                {[["The problem", story.problem], ["Engineering decision", story.decision], ["What it delivers", story.outcome]].map(([label, text]) => (
+                  <div key={label}>
+                    <dt className="font-semibold text-text-primary">{label}</dt>
+                    <dd className="mt-1 text-text-muted">{text}</dd>
+                  </div>
+                ))}
+              </dl>
+            </details>
+          </div>
         ) : null}
         <p className="mt-5 font-mono text-[11px] leading-relaxed text-text-muted">{[...new Set([project.language, ...project.technologies].filter(Boolean))].slice(0, 4).join(" · ")}</p>
         <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-white/10 pt-4">
