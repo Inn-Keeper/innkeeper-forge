@@ -181,3 +181,14 @@ body {
 .forge-impact { animation: forge-impact var(--forge-cycle) linear infinite; opacity: 0; }
 @keyframes forge-impact { 0%, 55.9%, 64%, 100% { opacity: 0; } 56%, 58% { opacity: 1; } }
 #projects, #about, #catalogue { scroll-margin-top: 2rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  .forge-scene * {
+    animation: none;
+  }
+
+  .forge-strike-spark,
+  .forge-impact {
+    opacity: 0;
+  }
+}

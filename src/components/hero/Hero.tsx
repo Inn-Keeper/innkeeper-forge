@@ -17,9 +17,9 @@ export function Hero() {
             <Button href="#projects">Explore my work <span aria-hidden="true" className="ml-2">↓</span></Button>
             <Button href="/cv/Dalton_Castro_Fullstack_CV.pdf" variant="ghost" external>View CV <span className="ml-2 text-xs">PDF ↗</span></Button>
           </div>
-          <div className="mt-5 flex gap-6 text-sm">
-            <a href={aboutConfig.links.email} className="text-link text-text-muted hover:text-text-primary">Get in touch ↗</a>
-            <a href={aboutConfig.links.linkedin} target="_blank" rel="noopener noreferrer" className="text-link text-text-muted hover:text-text-primary">LinkedIn <span aria-hidden="true">↗</span><span className="sr-only"> (opens in new tab)</span></a>
+          <div className="mt-5 flex flex-wrap gap-x-6 gap-y-2 text-sm">
+            <a href={aboutConfig.links.email} className="text-link inline-flex min-h-11 items-center gap-1 text-text-muted hover:text-text-primary">Get in touch ↗</a>
+            <a href={aboutConfig.links.linkedin} target="_blank" rel="noopener noreferrer" className="text-link inline-flex min-h-11 items-center gap-1 text-text-muted hover:text-text-primary">LinkedIn <span aria-hidden="true">↗</span><span className="sr-only"> (opens in new tab)</span></a>
           </div>
         </div>
         <ForgeBackdrop />

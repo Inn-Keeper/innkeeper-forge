@@ -41,12 +41,12 @@ export default function InTheMakingPage() {
         </section>
 
         <section aria-labelledby="snowbrawl-heading" className="mx-auto mt-8 grid max-w-6xl gap-6 rounded-2xl border border-white/10 bg-bg-surface p-6 sm:p-10 md:grid-cols-2">
+          <div className="flex flex-wrap items-center justify-between gap-3 font-mono text-xs md:col-span-2">
+            <p className="text-ember">02 / GAME DEVELOPMENT</p>
+            <span className="rounded-full border border-ember/30 px-3 py-2 text-ember">In development</span>
+          </div>
           <div>
-            <div className="flex flex-wrap items-center justify-between gap-3 font-mono text-xs">
-              <p className="text-ember">02 / GAME DEVELOPMENT</p>
-              <span className="rounded-full border border-ember/30 px-3 py-2 text-ember">In development</span>
-            </div>
-            <h2 id="snowbrawl-heading" className="font-display mt-5 text-3xl font-bold">SnowBrawl</h2>
+            <h2 id="snowbrawl-heading" className="font-display text-3xl font-bold">SnowBrawl</h2>
             <p className="mt-3 text-text-muted">{snowBrawl.description}</p>
             <p className="mt-5 font-mono text-xs leading-relaxed text-ember">C++ · {snowBrawl.technologies.join(" · ")}</p>
           </div>
@@ -59,9 +59,12 @@ export default function InTheMakingPage() {
         </section>
 
         <section aria-labelledby="speedztail-heading" className="mx-auto mt-8 grid max-w-6xl gap-6 rounded-2xl border border-white/10 bg-bg-surface p-6 sm:p-10 md:grid-cols-2">
+          <div className="flex flex-wrap items-center justify-between gap-3 font-mono text-xs md:col-span-2">
+            <p className="text-ember">03 / COLLABORATION</p>
+            <span className="rounded-full border border-ember/30 px-3 py-2 text-ember">Available on Android</span>
+          </div>
           <div>
-            <p className="font-mono text-xs text-ember">03 / COLLABORATION · AVAILABLE ON ANDROID</p>
-            <h2 id="speedztail-heading" className="font-display mt-5 text-3xl font-bold">{speedzTail.title}</h2>
+            <h2 id="speedztail-heading" className="font-display text-3xl font-bold">{speedzTail.title}</h2>
             <p className="mt-3 text-text-muted">{speedzTail.description}</p>
             <p className="mt-5 text-sm text-text-muted">With <a href={`https://github.com/${speedzTail.owner}`} className="text-link text-ember">{speedzTail.ownerName}</a>.</p>
           </div>

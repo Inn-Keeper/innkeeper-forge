@@ -5,31 +5,40 @@ import { useEffect } from "react";
 
 export function LenisProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
+    const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let stopScrolling: (() => void) | undefined;
 
-    if (prefersReducedMotion) return;
+    function updateScrolling() {
+      stopScrolling?.();
+      stopScrolling = undefined;
+      if (preference.matches) return;
 
-    const lenis = new Lenis({
-      // The body grows when disclosures open; the html element has a fixed height.
-      content: document.body,
-      duration: 1.1,
-      smoothWheel: true,
-    });
+      const lenis = new Lenis({
+        // The body grows when disclosures open; the html element has a fixed height.
+        content: document.body,
+        duration: 1.1,
+        smoothWheel: true,
+      });
+      let frame = 0;
 
-    let frame = 0;
+      function raf(time: number) {
+        lenis.raf(time);
+        frame = requestAnimationFrame(raf);
+      }
 
-    function raf(time: number) {
-      lenis.raf(time);
       frame = requestAnimationFrame(raf);
+      stopScrolling = () => {
+        cancelAnimationFrame(frame);
+        lenis.destroy();
+      };
     }
 
-    frame = requestAnimationFrame(raf);
+    preference.addEventListener("change", updateScrolling);
+    updateScrolling();
 
     return () => {
-      cancelAnimationFrame(frame);
-      lenis.destroy();
+      preference.removeEventListener("change", updateScrolling);
+      stopScrolling?.();
     };
   }, []);
 

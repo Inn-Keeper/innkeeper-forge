@@ -62,7 +62,7 @@ export function AboutSection() {
               <a
                 href={aboutConfig.links.email}
                 aria-label={`Email ${aboutConfig.shortName}`}
-                className="text-link text-sm font-semibold text-ember transition hover:text-flame focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ember"
+                className="text-link inline-flex min-h-11 items-center text-sm font-semibold text-ember transition hover:text-flame focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ember"
               >
                 Email →
               </a>
@@ -70,7 +70,7 @@ export function AboutSection() {
                 href={aboutConfig.links.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-link text-sm font-semibold text-text-muted transition hover:text-text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ember"
+                className="text-link inline-flex min-h-11 items-center text-sm font-semibold text-text-muted transition hover:text-text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ember"
               >
                 GitHub →
                 <span className="sr-only"> (opens in new tab)</span>
@@ -79,7 +79,7 @@ export function AboutSection() {
                 href={aboutConfig.links.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-link text-sm font-semibold text-text-muted transition hover:text-text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ember"
+                className="text-link inline-flex min-h-11 items-center text-sm font-semibold text-text-muted transition hover:text-text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ember"
               >
                 LinkedIn →
                 <span className="sr-only"> (opens in new tab)</span>

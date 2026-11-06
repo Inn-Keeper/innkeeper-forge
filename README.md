@@ -64,6 +64,24 @@ Private repo names/descriptions appear on the deployed site. Use `visible: false
 
 Without `GITHUB_TOKEN` on Vercel, the build fails or only public repos appear.
 
+## Browser requirements and visual checks
+
+The styling uses Tailwind CSS v4. Its documented browser baseline is Chrome/Edge
+111+, Safari 16.4+, and Firefox 128+. These are framework requirements, not a
+claim that this site has been tested on every minimum version. See
+[Tailwind's compatibility documentation](https://tailwindcss.com/docs/compatibility).
+
+Check all three routes (`/`, `/experience`, `/in-the-making`) after layout changes.
+Include phone and desktop widths, the 768px and 1024px grid transitions, larger
+text, keyboard navigation, and reduced motion. Exercise catalogue expansion,
+filters, project disclosures, role disclosures, and timeline scrolling.
+
+The November 2026 review included native Chrome screenshots of desktop layouts
+and a 375 × 667 iPhone SE emulation of the In the Making page. The user also visually checked Safari and Firefox and reported good results;
+versions and test sizes were not specified. Actual iPhone, minimum browser
+versions, and enlarged-text behavior remain unverified. The review evidence and remaining checks are recorded in
+[`docs/styling-review.md`](docs/styling-review.md).
+
 ## Next.js concepts used
 
 | File | Pattern |
