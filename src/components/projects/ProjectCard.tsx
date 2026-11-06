@@ -49,7 +49,7 @@ export function ProjectCard({ project, preview }: ProjectCardProps) {
         <p className="mt-5 font-mono text-[11px] leading-relaxed text-text-muted">{[...new Set([project.language, ...project.technologies].filter(Boolean))].slice(0, 4).join(" · ")}</p>
         <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-white/10 pt-4">
           {project.demoUrl ? (
-            <a href={project.demoUrl} target="_blank" rel="noopener noreferrer" className="text-link inline-flex min-h-11 items-center text-sm font-semibold text-ember focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ember">Try the demo <span aria-hidden="true" className="ml-2">↗</span><span className="sr-only">: {project.title} (opens in new tab)</span></a>
+            <a href={project.demoUrl} target="_blank" rel="noopener noreferrer" className="text-link inline-flex min-h-11 items-center text-sm font-semibold text-ember focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ember">{project.demoUrl.startsWith("https://play.google.com/") ? "Get it on Google Play" : "Try the demo"} <span aria-hidden="true" className="ml-2">↗</span><span className="sr-only">: {project.title} (opens in new tab)</span></a>
           ) : null}
           {project.htmlUrl ? (
             <a href={project.htmlUrl} target="_blank" rel="noopener noreferrer" className="text-link inline-flex min-h-11 items-center text-sm text-text-muted hover:text-text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ember">Source code <span aria-hidden="true" className="ml-2">↗</span><span className="sr-only">: {project.title} on GitHub (opens in new tab)</span></a>

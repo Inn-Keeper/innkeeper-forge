@@ -36,10 +36,11 @@ test("matematica shows up in the React Native filter", () => {
   assert.ok(portfolioConfig.repos.matematica.technologies.includes("React Native"));
 });
 
-test("speedz-tail is listed as an in-progress collab", () => {
+test("speedz-tail links to its Android release", () => {
   const collab = portfolioConfig.collaborations["speedz-tail"];
   assert.equal(collab.owner, "joelpiccoli");
-  assert.equal(collab.inProgress, true);
+  assert.equal(collab.inProgress, false);
+  assert.equal(new URL(collab.demoUrl).searchParams.get("id"), "com.joelpiccoli.speedztail");
   assert.ok(collab.technologies.includes("React Native"));
 });
 

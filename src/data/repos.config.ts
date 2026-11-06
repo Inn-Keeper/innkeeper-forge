@@ -152,8 +152,8 @@ export const portfolioConfig = {
       visible: true,
       title: "Snow Brawl",
       span: "medium",
-      technologies: ["SFML", "Box2D", "EnTT"],
-      description: "C++ game experiment with a snow-themed brawl prototype.",
+      technologies: ["Unreal Engine 5.8"],
+      description: "A C++ game experiment with a snow-themed brawl prototype. The idea is to provoke your opponent in a fun, playful way. The initial prototype used SFML; development has now moved to Unreal Engine 5.8.",
     },
 
     "lambari": {
@@ -240,11 +240,12 @@ export const portfolioConfig = {
       title: "SpeedzTail",
       owner: "joelpiccoli",
       ownerName: "Joel Piccoli",
-      role: "UI/UX, game experience, and soundtrack (full composition and arrangements)",
-      inProgress: true,
+      role: "UI/UX, game experience, and soundtrack (full composition and arrangements still in the making)",
+      inProgress: false,
+      demoUrl: "https://play.google.com/store/apps/details?id=com.joelpiccoli.speedztail&hl=en",
       span: "medium",
       technologies: ["React Native", "Pro Tools"],
-      description: "Infinite 2D car racing game.",
+      description: "An endless 2D racing game. Think you can make it to the top of the leaderboard?",
     },
   } satisfies Record<string, CollabConfig>,
 };
