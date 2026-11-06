@@ -36,7 +36,7 @@ export const experienceConfig = {
   hero: {
     name: "Dalton Castro",
     role: "Senior Engineer",
-    headline: "15 years building web and mobile products.",
+    headline: "15 years since the first delivery",
     location: "Stockholm, Sweden",
   },
   milestones: [
@@ -51,7 +51,7 @@ export const experienceConfig = {
       description: "Shared framework work for Philips Tasy EMR and its product teams.",
     },
     {
-      year: "2021-present",
+      year: "2021-2026",
       title: "Regulated products and enterprise tooling",
       description: "Consumer platforms at LeoVegas and Azure DevOps products at Nooga.",
     },
@@ -61,33 +61,33 @@ export const experienceConfig = {
       company: "Nooga Solutions AB",
       location: "Stockholm, Sweden",
       role: "Software Engineer",
-      period: "Aug 2025 - Present",
+      period: "Aug 2025 - Oct 2026",
       start: "2025-08",
       context:
         "Enterprise extensions and product experiments distributed through the Azure Marketplace.",
       outcomes: [
         {
-          text: "Cut most SAFe dashboard request times from several minutes to milliseconds through data chunking, concurrency controls, and telemetry instrumentation.",
+          text: "Improved dashboard responsiveness for large customer organisations with batched data loading, bounded request concurrency, and retries, keeping the interface usable during large loads.",
           focuses: ["frontend", "backend"],
         },
         {
-          text: "Implemented role-based access control covering four product roles and Azure DevOps-specific ownership cases.",
+          text: "Designed and delivered permission controls for four user roles, including additional rules for project managers and extension owners.",
           focuses: ["frontend", "backend", "leadership"],
         },
         {
-          text: "Build React and TypeScript extensions for Azure DevOps used by enterprise customers.",
+          text: "Built React and TypeScript extensions for Azure DevOps used by enterprise customers.",
           focuses: ["frontend"],
         },
         {
-          text: "Contribute backend fixes and features to Azure Functions powering the license checker and risk extension.",
+          text: "Maintained backend services supporting licence checks and risk features alongside customer-facing extension development.",
           focuses: ["backend"],
         },
         {
-          text: "Own GitHub security workflows and the Playwright end-to-end suite; investigate incidents with Application Insights and KQL.",
+          text: "Owned security checks and automated testing; used Application Insights to monitor performance and investigate production issues.",
           focuses: ["frontend", "leadership"],
         },
         {
-          text: "Partner with Product and Sales on telemetry-led prototypes to test business goals before full development.",
+          text: "Worked with Product and Sales to prototype ideas and assess customer usage before committing to implementation.",
           focuses: ["leadership"],
         },
       ],
@@ -121,11 +121,15 @@ export const experienceConfig = {
           focuses: ["frontend", "leadership"],
         },
         {
-          text: "Contributed to early group API capabilities in a NestJS monorepo.",
+          text: "Ran multiple A/B tests with the experimentation team, including a winning signup design that increased signups.",
+          focuses: ["frontend"],
+        },
+        {
+          text: "Contributed to the shared group API, bringing multiple backend facade services together through GraphQL.",
           focuses: ["frontend", "backend"],
         },
         {
-          text: "Supported production quality through Datadog and Grafana investigation, testing, code review, and LaunchDarkly experiments.",
+          text: "Investigated production issues using Datadog and supported release quality through automated testing and code review in a regulated, responsible-gaming environment.",
           focuses: ["frontend", "leadership"],
         },
       ],
@@ -199,7 +203,7 @@ export const experienceConfig = {
         "Core architecture for Philips Tasy EMR, an electronic medical record product used worldwide.",
       outcomes: [
         {
-          text: "Built shared AngularJS framework components for Philips Tasy EMR as part of the core architecture team, supporting dozens of engineers across product modules.",
+          text: "Built shared AngularJS framework components for Philips Tasy EMR as part of the core architecture team, supporting around 250 internal developers across product modules.",
           focuses: ["frontend", "leadership"],
         },
         {
@@ -222,7 +226,7 @@ export const experienceConfig = {
       context: "Vehicle tracking, data integration, and live monitoring systems.",
       outcomes: [
         {
-          text: "Owned the architecture for a monitoring prototype with Oracle-to-MongoDB ETL and live WebSocket updates.",
+          text: "Owned the architecture of a live vehicle-tracking prototype with Oracle-to-MongoDB ETL, a Java polling service, and WebSocket updates.",
           focuses: ["frontend", "backend", "leadership"],
         },
         {

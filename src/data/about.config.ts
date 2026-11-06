@@ -8,7 +8,7 @@ export const aboutConfig = {
   role: "Senior Engineer",
   location: "Stockholm, Sweden",
   experienceYears,
-  headline: `Product-minded engineer, ${experienceYears} years shipping web and mobile software.`,
+  headline: `${experienceYears} years since the first delivery`,
   bio: [
     "I like understanding the problem before building, working closely with product teams, and following what happens after release.",
     "The Inn-Keeper name comes from the characters in games who help adventurers prepare for the journey ahead.",
@@ -23,9 +23,7 @@ export const aboutConfig = {
   focus: [
     "React & TypeScript",
     "React Native & Expo",
-    "Product engineering",
-    "Ownership & autonomy",
-    "End-to-end delivery",
+    "Node.js",
   ],
   links: {
     email: "mailto:daltonmcastro@gmail.com",

@@ -12,6 +12,8 @@ export function LenisProvider({ children }: { children: React.ReactNode }) {
     if (prefersReducedMotion) return;
 
     const lenis = new Lenis({
+      // The body grows when disclosures open; the html element has a fixed height.
+      content: document.body,
       duration: 1.1,
       smoothWheel: true,
     });

@@ -1,15 +1,15 @@
 import Link from "next/link";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 
-// Selected highlights from the October 2026 Software Engineer CV.
+// Selected highlights from the current Full-stack CV.
 const roles = [
   {
     company: "Nooga Solutions",
     role: "Software Engineer",
-    period: "Aug 2025 — Present",
+    period: "Aug 2025 — Oct 2026",
     domain: "Enterprise tooling",
     description: "React and TypeScript extensions for Azure DevOps, distributed through the Azure Marketplace.",
-    contribution: "Improved dashboard request performance with data chunking and concurrency controls. Implemented role-based access and own the Playwright end-to-end suite.",
+    contribution: "Improved dashboard responsiveness during large data loads with batching, bounded concurrency, and retries. Delivered permission controls for four user roles and owned security checks and automated testing.",
   },
   {
     company: "LeoVegas Group",
@@ -17,7 +17,7 @@ const roles = [
     period: "Apr 2021 — Apr 2025",
     domain: "Regulated consumer products",
     description: "Customer-facing experiences on a shared, multi-brand platform across web and mobile.",
-    contribution: "Delivered React, TypeScript, and GraphQL features, contributed to brand launches, and collaborated with native engineers on Ionic and early React Native apps.",
+    contribution: "Built customer-facing features and ran A/B tests, including a signup design that increased signups. Contributed to the shared GraphQL API and worked with native engineers on Ionic and early React Native apps.",
   },
   {
     company: "Philips Informatics",
@@ -25,7 +25,7 @@ const roles = [
     period: "Apr 2017 — Apr 2018",
     domain: "Healthcare platforms",
     description: "Shared framework components for Philips Tasy EMR, as part of the core architecture team.",
-    contribution: "Built AngularJS components used across product modules, patient-test visualizations, and supporting Java services for clinical workflows.",
+    contribution: "Built shared AngularJS components supporting around 250 internal developers, patient-test visualizations, and Java services for clinical workflows.",
   },
 ];
 

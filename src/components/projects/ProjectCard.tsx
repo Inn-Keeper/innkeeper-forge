@@ -23,14 +23,14 @@ export function ProjectCard({ project, preview }: ProjectCardProps) {
           <h3 className="font-display text-2xl font-bold">{project.title}</h3>
           {project.inProgress ? <span className="text-xs text-text-muted">In progress</span> : null}
         </div>
-        <p className="mt-3 flex-1 text-sm leading-relaxed text-text-muted sm:text-base">{project.description}</p>
+        <p className={`mt-3 text-sm leading-relaxed text-text-muted sm:text-base ${story ? "md:min-h-[10lh] xl:min-h-[8lh]" : "flex-1"}`}>{project.description}</p>
         {project.collab ? (
           <p className="mt-3 text-sm leading-relaxed text-text-muted">With <a href={`https://github.com/${project.collab.owner}`} target="_blank" rel="noopener noreferrer" className="text-link text-ember">{project.collab.ownerName}<span className="sr-only"> on GitHub (opens in new tab)</span></a>. My role: {project.collab.role}.</p>
         ) : null}
         {story ? (
-          <div className="mt-4">
-            <p className="text-sm leading-relaxed text-text-primary">{story.ownership}</p>
-            <details className="group mt-4 rounded-lg border border-white/10 bg-bg-deep/40 open:bg-bg-deep/60">
+          <div className="mt-4 flex flex-1 flex-col">
+            <p className="text-sm leading-relaxed text-text-primary md:min-h-[3lh]">{story.ownership}</p>
+            <details open className="group mt-4 open:flex-1 rounded-lg border border-white/10 bg-bg-deep/40 open:bg-bg-deep/60">
               <summary className="cursor-pointer rounded-lg px-4 py-3 text-sm font-semibold text-ember focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ember">
                 <span className="ml-1">Decisions & outcomes</span>
                 <span className="sr-only"> for {project.title}</span>

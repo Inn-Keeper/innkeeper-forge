@@ -86,7 +86,7 @@ export default function OpenGraphImage() {
             textTransform: "uppercase",
           }}
         >
-          {`${aboutConfig.shortName} · ${aboutConfig.role}`}
+          {aboutConfig.role}
         </div>
         <div
           style={{
@@ -98,7 +98,7 @@ export default function OpenGraphImage() {
             lineHeight: 1,
           }}
         >
-          Innkeeper Forge
+          {aboutConfig.shortName}
         </div>
         <div
           style={{
@@ -110,7 +110,7 @@ export default function OpenGraphImage() {
             lineHeight: 1.35,
           }}
         >
-          Product-minded engineer building web and mobile apps with React,
+          Building web and mobile apps with React,
           React Native, and TypeScript.
         </div>
         <div

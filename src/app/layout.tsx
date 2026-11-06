@@ -24,17 +24,17 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://innkeeper-forge.vercel.app"),
-  title: "Dalton Castro · Innkeeper Forge",
+  title: "Dalton Castro — Senior Engineer",
   description:
-    "Portfolio of Dalton Castro, a product-minded software engineer building web and mobile apps with React, React Native, and TypeScript.",
+    "Portfolio of Dalton Castro, a senior software engineer building web and mobile apps with React, React Native, and TypeScript.",
   icons: {
     icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
     apple: [{ url: "/apple-icon.svg", type: "image/svg+xml" }],
   },
   openGraph: {
-    title: "Innkeeper Forge",
+    title: "Dalton Castro — Senior Engineer",
     description:
-      "Portfolio of Dalton Castro, a product-minded software engineer building web and mobile apps with React, React Native, and TypeScript.",
+      "Portfolio of Dalton Castro, a senior software engineer building web and mobile apps with React, React Native, and TypeScript.",
     url: "/",
     siteName: "Innkeeper Forge",
     type: "website",

@@ -19,7 +19,7 @@ export const portfolioConfig = {
       visible: true,
       title: "Grip",
       featured: true,
-      technologies: ["Expo", "React Native", "Vite", "TanStack", "Supabase"],
+      technologies: ["Python", "FastAPI", "Gemini", "Expo", "React Native", "Vite", "TanStack", "Supabase"],
       description:
         "Interview prep and hiring pipeline manager. Web and React Native apps share one Supabase Postgres, with funnel analytics, stage velocity, and follow-up tracking.",
     },
