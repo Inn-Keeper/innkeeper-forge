@@ -23,6 +23,8 @@ export default async function Home() {
       <ProjectsSection projects={projects} />
       <AboutSection />
       <Footer />
+      {/* eslint-disable-next-line */}
+      <img src="/icon.svg" />
     </main>
   );
 }
