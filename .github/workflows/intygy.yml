@@ -6,6 +6,7 @@ on:
 
 permissions:
   contents: read
+  id-token: write # lets GitHub attest which workflow run produced the scan
 
 jobs:
   a11y:
