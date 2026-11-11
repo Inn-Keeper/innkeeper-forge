@@ -24,7 +24,7 @@ export default async function Home() {
       <AboutSection />
       <Footer />
       {/* eslint-disable-next-line */}
-      <img src="/icon.svg" />
+      <img src="/icon.svg" alt="Forge icon" />
     </main>
   );
 }
