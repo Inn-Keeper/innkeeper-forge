@@ -1,5 +1,7 @@
 # Innkeeper Forge
 
+[![Accessibility check](https://github.com/Inn-Keeper/innkeeper-forge/actions/workflows/intygy.yml/badge.svg)](https://github.com/Inn-Keeper/innkeeper-forge/actions/workflows/intygy.yml)
+
 A dark, cinematic GitHub portfolio built with Next.js. Projects sync from GitHub at build/refresh time; visibility and copy are curated in config.
 
 ## Quick start
