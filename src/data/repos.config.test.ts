@@ -43,7 +43,3 @@ test("speedz-tail links to its Android release", () => {
   assert.equal(new URL(collab.demoUrl).searchParams.get("id"), "com.joelpiccoli.speedztail");
   assert.ok(collab.technologies.includes("React Native"));
 });
-
-test("kotlin-study is included in the synced portfolio", () => {
-  assert.equal(portfolioConfig.repos["kotlin-study"].visible, true);
-});

@@ -14,7 +14,7 @@ export function ProjectCard({ project, preview }: ProjectCardProps) {
     <article className="flex h-full min-w-0 flex-col overflow-hidden rounded-2xl border border-white/10 bg-bg-surface transition-colors hover:border-ember/30">
       {preview ? (
         <div className="relative aspect-[16/10] overflow-hidden border-b border-white/10 bg-bg-elevated">
-          <Image src={preview.src} alt={preview.alt} fill sizes="(min-width: 1024px) 368px, (min-width: 768px) 45vw, 90vw" className="object-cover object-top" />
+          <Image src={preview.src} alt={preview.alt} fill sizes="(min-width: 768px) 45vw, 90vw" className="object-cover object-top" />
         </div>
       ) : null}
       <div className="flex flex-1 flex-col p-6">

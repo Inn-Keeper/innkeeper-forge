@@ -26,4 +26,11 @@ export const projectStories: Record<string, {
     decision: "Commit Kafka offsets only after scoring and successful verdict publication. A crash can replay work, so delivery is at-least-once rather than exactly-once. The live dashboard is outside that delivery guarantee.",
     outcome: "A payment-fraud scoring prototype with velocity analysis, an analyst case queue, SSE updates, and throughput benchmarks. This is a learning project, not a production fraud service.",
   },
+  intygy: {
+    status: "Personal product · MVP",
+    ownership: "My work: GitHub Action scanner, ingest API, and evidence reports.",
+    problem: "Catch new accessibility violations in the pull request that introduces them, and keep a dated record of what was fixed.",
+    decision: "Fingerprint each failing element by rule, route, viewport, and exact selector, then compare against a baseline. Known issues do not block a pull request; only new ones do. Each scan and its baseline changes commit in one database transaction.",
+    outcome: "A GitHub Action that scans rendered routes with Playwright and axe-core, a Hono API that comments on the pull request and fails the check, and an EN 301 549 evidence page built from merge history. This is an MVP, not a launched service.",
+  },
 };

@@ -28,6 +28,7 @@ export const portfolioConfig = {
       title: "Intygy",
       featured: true,
       span: "large",
+      demoUrl: "https://intygy-landing.vercel.app",
       technologies: ["Playwright", "axe-core", "Hono"],
       description:
         "Accessibility compliance reviewed in every pull request. Blocks WCAG 2.2 regressions and builds EN 301 549 evidence dossiers.",
@@ -41,7 +42,7 @@ export const portfolioConfig = {
         "Collaborative 3D hardware design review. Reviewers join a shared room, inspect assemblies in exploded or isolated views, and comment live over WebSockets, with SQLite or Postgres persistence.",
     },
     "psycho-api": {
-      visible: true,
+      visible: false,
       title: "PsychoAI API",
       span: "medium",
       technologies: ["FastAPI", "SQLAlchemy", "PostgreSQL", "Anthropic API"],
@@ -82,7 +83,7 @@ export const portfolioConfig = {
         "Mobile-first app that slices panoramas into Instagram 4:5 carousel tiles that flow as one continuous image.",
     },
     "psycho-ui": {
-      visible: true,
+      visible: false,
       title: "PsychoAI UI",
       span: "medium",
       technologies: ["React", "Vite", "TanStack Query"],
@@ -97,7 +98,7 @@ export const portfolioConfig = {
       description: "Booking system experiment built with Next.js.",
     },
     "kotlin-study": {
-      visible: true,
+      visible: false,
       title: "Kotlin Study",
       span: "medium",
       technologies: ["Kotlin", "Gradle", "Ktor", "kotlinx.serialization"],
@@ -166,7 +167,7 @@ export const portfolioConfig = {
         "Real-time fraud scoring pipeline. A Go worker-pool engine scores payment transactions against velocity, geo, amount, and merchant-risk rules, fed over HTTP or Kafka, and streams verdicts to a live React dashboard. Named after a tiny Brazilian fish.",
     },
     "grip-ai-api": {
-      visible: true,
+      visible: false,
       title: "Grip AI API",
       span: "medium",
       technologies: ["FastAPI", "Pydantic", "Gemini", "Supabase"],
@@ -174,7 +175,7 @@ export const portfolioConfig = {
         "Talk-track grading service for Grip. Supabase-authenticated FastAPI with strict-output, evidence-required model grading.",
     },
     "ativscrum-ai-api": {
-      visible: true,
+      visible: false,
       title: "ativScrum AI API",
       span: "medium",
       technologies: ["FastAPI", "Pydantic", "Gemini", "Supabase"],
@@ -227,7 +228,7 @@ export const portfolioConfig = {
         "Month-to-month personal finance app for web and mobile, built to replace an old Excel sheet.",
     },
     "matematica-ai-api": {
-      visible: true,
+      visible: false,
       title: "Matemática AI API",
       technologies: ["FastAPI", "Gemini", "Supabase"],
       description:

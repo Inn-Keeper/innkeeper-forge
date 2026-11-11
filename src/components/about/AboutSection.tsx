@@ -29,9 +29,6 @@ export function AboutSection() {
             <p className="mt-1 font-mono text-sm text-text-muted">
               {aboutConfig.location}
             </p>
-            <p className="mt-4 text-sm leading-relaxed text-text-muted">
-              {aboutConfig.headline}
-            </p>
 
             <div className="mt-6 flex flex-wrap gap-2">
               {aboutConfig.focus.map((item) => (

@@ -11,15 +11,17 @@ interface ProjectsSectionProps {
   projects: Project[];
 }
 
+// Key order is the display order: one column on phones, then two columns filled top to bottom (two cards each).
 const previews: Record<string, { src: string; alt: string }> = {
-  stretchy: { src: "/projects/stretchy.png", alt: "Stretchy editor splitting a cat panorama into four aligned carousel tiles" },
   "grip-apps": { src: "/projects/grip-prep.png", alt: "Grip Prep screen showing a practice map of technologies, study cards and readiness stats" },
+  stretchy: { src: "/projects/stretchy.png", alt: "Stretchy editor splitting a cat panorama into four aligned carousel tiles" },
   lambari: { src: "/projects/lambari.png", alt: "Lambari dashboard showing simulated transaction throughput and a fraud review queue" },
+  intygy: { src: "/projects/intygy.png", alt: "Intygy landing page with an example pull request comment flagging a checkout button that has no text" },
 };
 
 export function ProjectsSection({ projects }: ProjectsSectionProps) {
   const catalogueRef = useRef<HTMLDetailsElement>(null);
-  const selected = projects.filter((project) => project.featured && previews[project.slug]).slice(0, 3);
+  const selected = Object.keys(previews).flatMap((slug) => projects.find((project) => project.featured && project.slug === slug) ?? []);
   const [activeLanguage, setActiveLanguage] = useState<string | null>(null);
 
   const languages = useMemo(() => {
@@ -57,12 +59,12 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
         <div className="mt-3 flex flex-wrap items-end justify-between gap-4">
           <div>
             <h2 className="font-display text-3xl font-bold sm:text-4xl">Selected work</h2>
-            <p className="mt-3 max-w-xl text-text-muted">My personal workshop: three projects, the problems behind them, and the decisions that shaped them.</p>
+            <p className="mt-3 max-w-xl text-text-muted">My personal workshop: four projects, the problems behind them, and the decisions that shaped them.</p>
           </div>
           <a href="#catalogue" onClick={() => { if (catalogueRef.current) catalogueRef.current.open = true; }} className="text-link inline-flex min-h-11 items-center text-sm text-ember">Browse all {projects.length} projects ↓</a>
         </div>
         {selected.length > 0 ? (
-          <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-8 grid gap-5 md:grid-flow-col md:grid-cols-2 md:grid-rows-[auto_auto]">
             {selected.map((project) => <ProjectCard key={project.slug} project={project} preview={previews[project.slug]} />)}
           </div>
         ) : <p className="mt-8 text-text-muted">Explore the full project catalogue below.</p>}

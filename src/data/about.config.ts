@@ -1,14 +1,10 @@
 import { portfolioConfig } from "@/data/repos.config";
 
-const experienceYears = 15;
-
 export const aboutConfig = {
   name: "Dalton Moraes de Castro",
   shortName: "Dalton Castro",
   role: "Senior Engineer",
   location: "Stockholm, Sweden",
-  experienceYears,
-  headline: `${experienceYears} years since the first delivery`,
   bio: [
     "I like understanding the problem before building, working closely with product teams, and following what happens after release.",
     "The Inn-Keeper name comes from the characters in games who help adventurers prepare for the journey ahead.",

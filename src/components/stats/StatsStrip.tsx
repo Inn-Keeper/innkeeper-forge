@@ -1,11 +1,8 @@
-import { aboutConfig } from "@/data/about.config";
-
 export function StatsStrip() {
   return (
     <section className="px-6" aria-label="At a glance">
-      <dl className="mx-auto grid max-w-6xl gap-6 border-y border-white/10 py-7 sm:grid-cols-3">
+      <dl className="mx-auto grid max-w-6xl gap-6 border-y border-white/10 py-7 sm:grid-cols-2">
         {[
-          ["Experience", `${aboutConfig.experienceYears} years since the first delivery`],
           ["Focus", "React · React Native · TypeScript · Node.js"],
           ["The workshop", "Personal projects & experiments"],
         ].map(([label, value]) => (
