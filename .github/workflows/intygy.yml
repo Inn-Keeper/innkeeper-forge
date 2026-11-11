@@ -1,0 +1,33 @@
+name: Accessibility check
+on:
+  pull_request:
+  push:
+    branches: [main] # post-merge scan: updates the baseline and marks resolved issues
+
+permissions:
+  contents: read
+
+jobs:
+  a11y:
+    runs-on: ubuntu-latest
+    env:
+      # The site lists the owner's repositories via /user/repos while building and serving.
+      # That endpoint rejects the workflow's own token, so this needs a personal access token.
+      GITHUB_TOKEN: ${{ secrets.FORGE_GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # The built site must match the SHA the Action records.
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      # Switch to @v1 once the v1.0.0 release is published.
+      - uses: Inn-Keeper/intygy@main
+        with:
+          api-key: ${{ secrets.INTYGY_KEY }}
+          api-base: https://intygy-api.onrender.com

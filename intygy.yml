@@ -1,0 +1,15 @@
+# Intygy accessibility scan configuration.
+# The workflow builds the site first, so the scan only has to start it.
+target:
+  serve: "pnpm start"
+  url: "http://localhost:3000"
+
+routes:
+  - /
+  - /experience
+  - /in-the-making
+
+# Every page renders <main id="main-content">.
+readySelector: "#main-content"
+ruleset: wcag22-aa
+viewports: [desktop, mobile]
