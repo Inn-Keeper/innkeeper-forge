@@ -45,6 +45,7 @@ function getCollabProjects(): Project[] {
         htmlUrl: null,
         homepage: null,
         demoUrl: config.demoUrl ?? null,
+        linkLabel: config.linkLabel,
         featured,
         private: true,
         span: resolveSpan(featured, config.span),
@@ -86,7 +87,9 @@ export async function getProjects(): Promise<Project[]> {
         // Private repos 404 for visitors, so they get no GitHub link.
         htmlUrl: repo.private ? null : repo.html_url,
         homepage: repo.homepage,
-        demoUrl: config?.demoUrl ?? repo.homepage ?? null,
+        // demoUrl: null in config hides the GitHub homepage link.
+        demoUrl: config?.demoUrl !== undefined ? config.demoUrl : repo.homepage ?? null,
+        linkLabel: config?.linkLabel,
         featured,
         private: repo.private,
         span: resolveSpan(featured, config?.span),

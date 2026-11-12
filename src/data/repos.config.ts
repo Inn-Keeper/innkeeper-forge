@@ -25,6 +25,7 @@ export const portfolioConfig = {
     },
     "intygy": {
       visible: true,
+      linkLabel: "Visit website",
       title: "Intygy",
       featured: true,
       span: "large",
@@ -119,6 +120,7 @@ export const portfolioConfig = {
     },
     "ignited-website": {
       visible: true,
+      linkLabel: "Visit website",
       title: "Ignited Website",
       span: "medium",
       technologies: ["React", "Vite", "GSAP"],
@@ -133,6 +135,7 @@ export const portfolioConfig = {
     },
     "portrait-web": {
       visible: true,
+      linkLabel: "Visit website",
       title: "Portrait",
       span: "medium",
       technologies: ["Astro", "React", "Supabase"],
@@ -199,6 +202,7 @@ export const portfolioConfig = {
     },
     "innkeeper-forge": {
       visible: true,
+      demoUrl: null,
       title: "Innkeeper Forge",
       span: "medium",
       technologies: ["Next.js 16", "React 19", "Motion", "React Three Fiber"],

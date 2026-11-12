@@ -7,6 +7,7 @@ export interface RepoConfig {
   span?: ProjectSpan;
   description?: string;
   demoUrl?: string | null;
+  linkLabel?: string;
   technologies?: string[];
 }
 
@@ -31,6 +32,7 @@ export interface Project {
   htmlUrl: string | null;
   homepage: string | null;
   demoUrl: string | null;
+  linkLabel?: string;
   featured: boolean;
   private: boolean;
   span: ProjectSpan;
